@@ -1,0 +1,158 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://sampaeducacional.com.br/#organization",
+      "name": "Sampa Educacional",
+      "url": "https://sampaeducacional.com.br",
+      "logo": "https://sampaeducacional.com.br/logo.png",
+      "description": "Plataforma educacional com cursos online para desenvolvimento profissional e acadêmico.",
+      "foundingDate": "2024",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "São Paulo",
+        "addressCountry": "BR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "email": "contato@sampaeducacional.com.br"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sampaeducacional.com.br/#website",
+      "name": "Sampa Educacional",
+      "url": "https://sampaeducacional.com.br",
+      "publisher": {
+        "@id": "https://sampaeducacional.com.br/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://sampaeducacional.com.br?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://sampaeducacional.com.br/",
+      "name": "Sampa Educacional - Cursos Online",
+      "url": "https://sampaeducacional.com.br",
+      "description": "Explore nossos cursos online especializados em tecnologia, negócios e desenvolvimento pessoal.",
+      "isPartOf": {
+        "@id": "https://sampaeducacional.com.br/#website"
+      },
+      "publisher": {
+        "@id": "https://sampaeducacional.com.br/#organization"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "Course",
+            "@id": "https://sampaeducacional.com.br/cursos/python",
+            "position": 1,
+            "name": "Python para Iniciantes",
+            "description": "Aprenda programação Python do zero. Ideal para quem está começando.",
+            "provider": {
+              "@id": "https://sampaeducacional.com.br/#organization"
+            },
+            "courseMode": "Online",
+            "inLanguage": "pt-BR",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "150"
+            }
+          },
+          {
+            "@type": "Course",
+            "@id": "https://sampaeducacional.com.br/cursos/web-desenvolvimento",
+            "position": 2,
+            "name": "Web Development Completo",
+            "description": "HTML, CSS, JavaScript e frameworks modernos. Do frontend ao backend.",
+            "provider": {
+              "@id": "https://sampaeducacional.com.br/#organization"
+            },
+            "courseMode": "Online",
+            "inLanguage": "pt-BR",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "320"
+            }
+          },
+          {
+            "@type": "Course",
+            "@id": "https://sampaeducacional.com.br/cursos/data-science",
+            "position": 3,
+            "name": "Data Science & Machine Learning",
+            "description": "Análise de dados, visualização e modelos de ML com Python.",
+            "provider": {
+              "@id": "https://sampaeducacional.com.br/#organization"
+            },
+            "courseMode": "Online",
+            "inLanguage": "pt-BR",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.7",
+              "ratingCount": "220"
+            }
+          },
+          {
+            "@type": "Course",
+            "@id": "https://sampaeducacional.com.br/cursos/gestao-projetos",
+            "position": 4,
+            "name": "Gestão de Projetos Ágil",
+            "description": "Scrum, Kanban e metodologias ágeis aplicadas em projetos reais.",
+            "provider": {
+              "@id": "https://sampaeducacional.com.br/#organization"
+            },
+            "courseMode": "Online",
+            "inLanguage": "pt-BR",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.6",
+              "ratingCount": "180"
+            }
+          },
+          {
+            "@type": "Course",
+            "@id": "https://sampaeducacional.com.br/cursos/ui-ux-design",
+            "position": 5,
+            "name": "UI/UX Design Essentials",
+            "description": "Princípios de design, prototipagem e usabilidade para web.",
+            "provider": {
+              "@id": "https://sampaeducacional.com.br/#organization"
+            },
+            "courseMode": "Online",
+            "inLanguage": "pt-BR",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "260"
+            }
+          },
+          {
+            "@type": "Course",
+            "@id": "https://sampaeducacional.com.br/cursos/cloud-devops",
+            "position": 6,
+            "name": "Cloud & DevOps Mastery",
+            "description": "AWS, Docker, Kubernetes e práticas modernas de deployment.",
+            "provider": {
+              "@id": "https://sampaeducacional.com.br/#organization"
+            },
+            "courseMode": "Online",
+            "inLanguage": "pt-BR",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "280"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
