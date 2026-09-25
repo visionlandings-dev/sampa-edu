@@ -215,5 +215,5 @@ Para dúvidas sobre SEO, Schema ou deployment, consulte:
 ---
 
 **Versão**: 1.0  
-**Última atualização**: Setembro 2024  
+**Última atualização**: Setembro 2026  
 **Mantido por**: Sampa Educacional
