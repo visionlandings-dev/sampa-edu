@@ -1,22 +1,5 @@
-# Política: libera tudo, EXCETO /obrigado (não indexar página de confirmação)
-
 User-agent: *
 Allow: /
 Disallow: /obrigado
-Disallow: /obrigado.html
 
-# Permitir acesso ao sitemap
 Sitemap: https://sampaeducacional.com.br/sitemap.xml
-
-# Delay de crawl: 1 segundo
-Crawl-delay: 1
-
-# Específico para Googlebot (pode ser mais agressivo)
-User-agent: Googlebot
-Disallow: /obrigado
-Crawl-delay: 0
-
-# Específico para Bingbot
-User-agent: Bingbot
-Disallow: /obrigado
-Crawl-delay: 1

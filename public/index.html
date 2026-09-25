@@ -1,167 +1,942 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sampa Educacional - Cursos Online Especializados</title>
-    <meta name="description" content="Plataforma educacional com cursos online em Python, Web Development, Data Science, Gestão de Projetos, UI/UX Design e Cloud & DevOps.">
-    <meta name="keywords" content="cursos online, educação, Python, Web Development, Data Science, gestão ágil">
-    <meta name="author" content="Sampa Educacional">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Portuguese">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Sampa Educacional - Cursos Online">
-    <meta property="og:description" content="Aprenda com especialistas. Cursos em tecnologia, negócios e desenvolvimento pessoal.">
-    <meta property="og:url" content="https://sampaeducacional.com.br/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://sampaeducacional.com.br/og-image.png">
-    
-    <!-- Canonical -->
-    <link rel="canonical" href="https://sampaeducacional.com.br/">
-    
-    <!-- Schema.org (inline) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "EducationalOrganization",
-        "name": "Sampa Educacional",
-        "url": "https://sampaeducacional.com.br",
-        "logo": "https://sampaeducacional.com.br/logo.png",
-        "description": "Plataforma educacional com cursos especializados.",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "Customer Service",
-            "email": "contato@sampaeducacional.com.br"
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#0A192F"/>
+
+  <!-- SEO -->
+  <title>Sampa Educacional — Formação Transformadora para um Futuro de Impacto</title>
+  <meta name="description" content="Sob nova administração estratégica, estruturamos um ecossistema completo para transformar o seu desenvolvimento intelectual, cultural, tecnológico, pessoal e profissional. Entre na Lista VIP."/>
+  <link rel="canonical" href="https://sampaeducacional.com.br/"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230A192F'/><text y='24' x='6' font-size='22' font-family='sans-serif' font-weight='bold' fill='%23D4AF37'>S</text></svg>"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Sampa Educacional — Formação Transformadora para um Futuro de Impacto"/>
+  <meta property="og:description" content="Mentoria, pós-graduação, extensão e intercâmbio. Entre na Lista VIP e receba informações exclusivas em primeira mão."/>
+  <meta property="og:url" content="https://sampaeducacional.com.br/"/>
+  <meta property="og:locale" content="pt_BR"/>
+  <meta property="og:site_name" content="Sampa Educacional"/>
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Sampa Educacional — Lista VIP aberta"/>
+  <meta name="twitter:description" content="Formação transformadora. Entre na Lista VIP e receba informações em primeira mão."/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Sampa Educacional",
+    "url": "https://sampaeducacional.com.br",
+    "description": "Ecossistema educacional do Grupo Sampa. Mentoria, pós-graduação, cursos de extensão, inglês e intercâmbio.",
+    "telephone": "+5511967992285",
+    "sameAs": ["https://www.instagram.com/sampa_edu/"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Ecossistema Sampa Educacional",
+      "itemListElement": [
+        {"@type": "Course", "name": "Mentoria de Carreira", "courseMode": "online"},
+        {"@type": "Course", "name": "Pós-Graduação & Especialização"},
+        {"@type": "Course", "name": "Cursos de Extensão"},
+        {"@type": "Course", "name": "Inglês & Intercâmbio"},
+        {"@type": "Course", "name": "Treinamentos e Direcionamento ao Mercado"},
+        {"@type": "Course", "name": "Desenvolvimento de Lideranças"}
+      ]
     }
-    </script>
-    
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 20px; text-align: center; }
-        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        header p { font-size: 1.2rem; opacity: 0.9; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .courses { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 60px 0; }
-        .course-card { background: white; border-radius: 8px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
-        .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-        .course-card h3 { color: #667eea; margin-bottom: 10px; }
-        .course-card p { font-size: 0.95rem; color: #666; margin-bottom: 15px; }
-        .badge { display: inline-block; background: #667eea; color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; margin-right: 5px; }
-        .rating { color: #ffc107; font-weight: bold; margin-top: 10px; }
-        form { background: #f8f9fa; padding: 40px; border-radius: 8px; max-width: 500px; margin: 40px auto; }
-        form h2 { color: #667eea; margin-bottom: 20px; text-align: center; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: 500; }
-        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
-        textarea { resize: vertical; min-height: 100px; }
-        button { width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; font-weight: bold; }
-        button:hover { opacity: 0.9; }
-        footer { background: #333; color: white; text-align: center; padding: 30px 20px; margin-top: 60px; }
-        .highlight { background: #fffacd; padding: 20px; border-left: 4px solid #667eea; margin: 30px 0; }
-    </style>
+  }
+  </script>
+
+  <!-- Fonts: não-bloqueante -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Manrope:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Manrope:wght@400;600&display=swap"/></noscript>
+  <style>body,h1,h2,h3{font-family:system-ui,-apple-system,sans-serif}</style>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Paleta corporate v03 */
+      --navy:    #0A192F;
+      --navy-l:  #0B1B33;
+      --blue:    #71A1C9;
+      --gold:    #D4AF37;
+      --gold-h:  #C5A059;
+      --white:   #FFFFFF;
+      --muted:   #A0AEC0;
+      --ink:     #1A202C;
+      --gray:    #CBD5E0;
+      --surface: #F7FAFC;
+
+      --font-d: "Space Grotesk", system-ui, sans-serif;
+      --font-b: "Manrope", system-ui, sans-serif;
+
+      --g:  clamp(1.4rem, 5vw, 5rem);
+      --sy: clamp(4.5rem, 8vw, 8rem);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-b);
+      font-size: 16px; line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1,h2,h3 { font-family: var(--font-d); line-height: 1.08; letter-spacing: -0.03em; margin: 0; }
+    p { margin: 0; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--gold); color: var(--navy);
+      padding: .5rem 1rem; font-weight: 700; z-index: 9999;
+      border-radius: 3px; transition: top .2s;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.5rem var(--g);
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .3s, padding .3s, border-bottom .3s;
+    }
+    nav.stuck {
+      padding: 1rem var(--g);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gray);
+    }
+    .wordmark {
+      display: flex; align-items: center; gap: 0.75rem;
+      line-height: 1;
+    }
+    .wm-mark { display: flex; flex-shrink: 0; align-items: center; }
+    .wm-mark img {
+      width: 44px; height: auto;
+      filter: invert(62%) sepia(22%) saturate(800%) hue-rotate(183deg) brightness(1.05) contrast(0.9);
+      transition: filter .3s;
+    }
+    nav.stuck .wm-mark img {
+      filter: invert(12%) sepia(80%) saturate(1200%) hue-rotate(195deg) brightness(0.55) contrast(1.1);
+    }
+    .wm-text { display: flex; flex-direction: column; }
+    .wm-name {
+      font-family: var(--font-d); font-size: 1.1rem; font-weight: 700;
+      letter-spacing: -0.04em; color: var(--white); transition: color .3s;
+    }
+    .wm-sub {
+      font-family: var(--font-b); font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--blue); margin-top: 2px; transition: color .3s;
+    }
+    nav.stuck .wm-name { color: var(--navy); }
+    nav.stuck .wm-sub  { color: #4A7A9B; }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-family: var(--font-b); font-size: 0.86rem; font-weight: 600;
+      color: rgba(255,255,255,0.7); letter-spacing: 0.08em;
+      text-transform: uppercase; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    nav.stuck .nav-links a { color: #53687B; }
+    nav.stuck .nav-links a:hover { color: var(--navy); }
+
+    .nav-social { display: flex; align-items: center; gap: 0.55rem; }
+    .nav-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); transition: background .2s;
+    }
+    .nav-social a:hover { background: rgba(255,255,255,0.2); }
+    nav.stuck .nav-social a { background: #EEF2F7; }
+    nav.stuck .nav-social a:hover { background: #DDE6EF; }
+    .nav-social svg { width: 15px; height: 15px; stroke: rgba(255,255,255,0.85); fill: none; transition: stroke .2s; }
+    nav.stuck .nav-social svg { stroke: var(--navy); }
+
+    nav .nav-links a.nav-cta {
+      background: var(--gold); color: var(--navy);
+      padding: 0.6rem 1.4rem; border-radius: 4px;
+      font-family: var(--font-d); font-weight: 700;
+      font-size: 0.86rem; letter-spacing: 0.06em;
+      text-transform: uppercase; transition: background .2s;
+    }
+    nav .nav-links a.nav-cta:hover { background: var(--gold-h); color: var(--navy); }
+    nav.stuck .nav-links a.nav-cta { color: var(--navy); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy); color: var(--white);
+      position: relative; overflow: hidden;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      max-width: calc(1180px + 2 * var(--g));
+      margin: auto; padding: 10rem var(--g) 8rem;
+      display: grid; grid-template-columns: 1.2fr 0.8fr;
+      gap: 7%; align-items: center; min-height: 100vh;
+      position: relative; z-index: 1;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--font-b); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1.5rem;
+    }
+    .eyebrow::before {
+      content: '';
+      display: inline-block; width: 28px; height: 2px;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      max-width: 820px; margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-body {
+      font-size: 1.05rem; color: rgba(255,255,255,0.7);
+      max-width: 560px; line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      align-items: center; margin-top: 2.2rem;
+    }
+    .btn-gold {
+      display: inline-flex; justify-content: center; align-items: center;
+      min-height: 52px; padding: 0.85rem 2rem;
+      background: var(--gold); color: var(--navy);
+      font-family: var(--font-d); font-weight: 700; font-size: 1rem;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      border: 0; border-radius: 4px; cursor: pointer;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-gold:hover {
+      background: var(--gold-h);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212,175,55,0.3);
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center;
+      font-family: var(--font-d); font-size: 1rem; font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 2px; transition: color .2s, border-color .2s;
+    }
+    .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.6); }
+
+    /* hero card direito */
+    .hero-art {
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 140px 140px 8px 8px;
+      background: linear-gradient(155deg, #1a3d5c 0%, #0e2d4e 52%, #061a2e 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 2.5rem; min-height: 400px;
+      box-shadow: 24px 24px 0 rgba(212,175,55,0.06);
+    }
+    .hero-art::before {
+      content: 'SAMPA EDUCACIONAL — NOVA ERA';
+      font: 700 0.6rem var(--font-b); letter-spacing: 0.14em;
+      text-transform: uppercase;
+      position: absolute; top: 2rem; left: 2.5rem;
+      color: var(--blue);
+    }
+    .hero-art-bar { width: 40px; height: 4px; background: var(--gold); margin-bottom: 1.4rem; }
+    .hero-art blockquote {
+      font: 600 clamp(1.4rem, 2.4vw, 2rem)/1.25 var(--font-d);
+      margin: 0; color: var(--white);
+    }
+
+    /* ── BAND ── */
+    .band { background: var(--gold); height: 3px; }
+
+    /* ── SECTIONS COMUNS ── */
+    .section { padding: var(--sy) 0; }
+    .wrap { width: min(1180px, calc(100% - 2 * var(--g))); margin: auto; }
+    .sec-label {
+      font-family: var(--font-b); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.65rem;
+    }
+    .sec-label::before { content: ''; width: 18px; height: 1px; background: var(--blue); }
+    .section-h2 {
+      font-size: clamp(1.9rem, 3.5vw, 3rem); margin-bottom: 1.2rem;
+    }
+    .intro {
+      font-size: 1rem; max-width: 780px;
+      color: var(--muted); line-height: 1.85;
+    }
+
+    /* ── MANIFESTO (fundo claro) ── */
+    .manifesto {
+      background: var(--navy-l);
+      border-top: 1px solid rgba(113,161,201,0.1);
+    }
+    .manifesto .sec-label { color: rgba(166,199,229,0.8); }
+    .manifesto .sec-label::before { background: rgba(166,199,229,0.5); }
+    .manifesto .section-h2 { color: var(--white); }
+    .manifesto .intro { color: rgba(255,255,255,0.55); }
+
+    .pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .pillar {
+      background: rgba(10,25,47,0.5);
+      border-top: 3px solid var(--blue);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+    .pillar .icon {
+      font-size: 1.4rem; margin-bottom: 0.9rem; display: block;
+    }
+    .pillar b {
+      font: 600 1.05rem var(--font-d); color: var(--blue);
+      display: block; margin-bottom: 0.6rem;
+    }
+    .pillar p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
+
+    /* ── MENTORIA ── */
+    .mentoria {
+      background: var(--navy);
+      border-top: 1px solid rgba(113,161,201,0.08);
+    }
+    .mentoria-grid {
+      display: grid; grid-template-columns: 0.9fr 1.1fr;
+      gap: 7%; align-items: center;
+    }
+    .mentoria-panel {
+      background: linear-gradient(155deg, #1a3d5c 0%, #0e2d4e 52%, #061a2e 100%);
+      border: 1px solid rgba(113,161,201,0.2);
+      border-top: 5px solid var(--gold);
+      padding: 3rem; min-height: 420px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      border-radius: 4px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .mentoria-panel .symbol {
+      display: flex; align-items: flex-end;
+      margin-bottom: 1.5rem;
+    }
+    .mentoria-panel blockquote {
+      font: 600 1.5rem/1.3 var(--font-d);
+      color: var(--white); margin: 0;
+    }
+    .mentoria-panel blockquote em {
+      font-style: normal; color: var(--gold);
+    }
+    .mentoria-body .sec-label { color: var(--blue); }
+    .mentoria-body .section-h2 { color: var(--white); }
+    .mentoria-body .intro { color: var(--muted); }
+
+    /* ── ECOSSISTEMA / CARDS ── */
+    .ecossistema {
+      background: var(--navy-l);
+      border-top: 1px solid rgba(113,161,201,0.1);
+    }
+    .ecossistema .sec-label { color: rgba(166,199,229,0.8); }
+    .ecossistema .sec-label::before { background: rgba(166,199,229,0.5); }
+    .ecossistema .section-h2 { color: var(--white); }
+    .ecossistema .intro { color: rgba(255,255,255,0.5); }
+
+    .cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: rgba(255,255,255,0.06);
+      margin-top: 3rem;
+    }
+    .card {
+      background: var(--navy-l);
+      padding: 2rem 1.6rem;
+      display: flex; flex-direction: column;
+      transition: background .2s;
+    }
+    .card:hover { background: #0c2040; }
+    .card .card-icon {
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .card h3 {
+      font-size: 1.05rem; color: var(--blue);
+      margin-bottom: 0.6rem;
+    }
+    .card p { font-size: 0.86rem; color: rgba(255,255,255,0.45); line-height: 1.75; }
+
+    /* ── CAPTURA / FORMULÁRIO ── */
+    .captura {
+      background: var(--navy);
+      border-top: 1px solid rgba(113,161,201,0.1);
+      padding: var(--sy) 0;
+    }
+    .capture-grid {
+      display: grid; grid-template-columns: 0.85fr 1.15fr;
+      gap: 7%; align-items: start;
+    }
+    .captura .sec-label { color: var(--blue); }
+    .captura .section-h2 { color: var(--white); }
+    .captura-info p {
+      font-size: 0.9rem; color: var(--muted); line-height: 1.85; margin-top: 1.1rem;
+    }
+    .promises { margin-top: 2rem; }
+    .promise-item {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 0.82rem; font-weight: 400; color: var(--muted); line-height: 1.6;
+    }
+    .promise-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 0.4rem;
+    }
+    .sla-tag {
+      margin-top: 2rem;
+      display: inline-block;
+      font-family: var(--font-b); font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); padding: 0.85rem 1.1rem;
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.3);
+    }
+
+    /* ── FORMBOX ── */
+    .formbox {
+      background: var(--white); color: var(--ink);
+      padding: 2.5rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      border-radius: 4px;
+    }
+    .formbox h3 {
+      font-size: 1.3rem; color: var(--navy);
+      margin-bottom: 0.3rem; text-transform: uppercase;
+    }
+    .formbox > p {
+      font-size: 0.8rem; color: #4A5568; margin-bottom: 0; line-height: 1.6;
+    }
+    .fields {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-top: 1.5rem;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      display: block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: #2D3748; margin-bottom: 0.45rem;
+    }
+    label .opt { font-weight: 400; text-transform: none; letter-spacing: 0; }
+    input, select, textarea {
+      width: 100%; padding: 0.85rem 1rem;
+      border: 1px solid var(--gray); background: #F7FAFC;
+      color: var(--ink); border-radius: 4px; min-height: 46px;
+      font-family: var(--font-b); font-size: 0.86rem; outline: none;
+      -webkit-appearance: none; transition: border-color .2s, background .2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--blue); background: var(--white);
+    }
+    textarea { resize: vertical; min-height: 80px; }
+
+    .radio-group {
+      background: #F7FAFC; padding: 0.9rem 1rem;
+      border-radius: 4px; border: 1px solid var(--gray);
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .radio-group label {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.82rem; font-weight: 500; text-transform: none;
+      letter-spacing: 0; color: #4A5568; cursor: pointer;
+    }
+    .radio-group input[type="radio"] {
+      width: auto; min-height: auto; accent-color: var(--navy);
+    }
+
+    .f-consent {
+      display: flex; align-items: flex-start; gap: 0.7rem; margin-top: 1rem;
+    }
+    .f-consent input { width: auto; min-height: auto; margin-top: 3px; flex-shrink: 0; accent-color: var(--navy); }
+    .f-consent label {
+      font-size: 0.7rem; font-weight: 400; text-transform: none;
+      letter-spacing: 0; color: #53687B;
+    }
+    .f-consent label a { color: var(--blue); }
+
+    #consent-error {
+      display: none; color: #b00020; font-size: 0.7rem; margin-top: 0.4rem;
+    }
+
+    .btn-submit {
+      width: 100%; margin-top: 1.4rem;
+      display: flex; justify-content: center; align-items: center;
+      min-height: 52px; padding: 0.85rem 2rem;
+      background: var(--gold); color: var(--navy);
+      font-family: var(--font-d); font-weight: 700; font-size: 0.9rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      border: 0; border-radius: 4px; cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-submit:hover { background: var(--gold-h); }
+
+    .hint {
+      font-size: 0.7rem; margin-top: 0.8rem;
+      color: #53687B; text-align: center;
+    }
+
+    /* success */
+    .success {
+      display: none; background: #EBF4F1;
+      border-left: 4px solid #2D8659;
+      padding: 2rem; color: #1A3D2B;
+    }
+    .success strong { font-family: var(--font-d); font-size: 1.05rem; }
+    .success p { margin-top: 0.8rem; font-size: 0.85rem; line-height: 1.75; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #061324; color: #AFC8DC;
+      border-top: 3px solid var(--gold);
+      padding: 2rem 0;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between;
+      gap: 1.5rem; align-items: center;
+    }
+    .footer-brand .wm-name { color: var(--white); font-size: 1rem; }
+    .footer-brand .wm-sub  { color: var(--blue); }
+    .footer-brand .wm-mark img {
+      filter: invert(62%) sepia(22%) saturate(800%) hue-rotate(183deg) brightness(1.05) contrast(0.9);
+    }
+    footer p { font-size: 0.78rem; margin: 0; color: var(--muted); }
+    .footer-legal { font-size: 0.68rem; color: rgba(175,200,220,0.4); text-align: right; line-height: 1.6; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .55s, transform .55s;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner       { grid-template-columns: 1fr; padding-top: 8rem; min-height: auto; }
+      .mentoria-grid    { grid-template-columns: 1fr; }
+      .capture-grid     { grid-template-columns: 1fr; }
+      .cards            { grid-template-columns: repeat(2, 1fr); }
+      .pillars          { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .cards  { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: 1fr; }
+      .hero-art { display: none; }
+    }
+    @media (max-width: 560px) {
+      .fields          { grid-template-columns: 1fr; }
+      .footer-inner    { flex-direction: column; align-items: flex-start; }
+      .footer-legal    { text-align: left; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-social      { display: flex; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🎓 Sampa Educacional</h1>
-        <p>Cursos Online Especializados para o Futuro da Tecnologia</p>
-    </header>
 
-    <div class="container">
-        <h2 style="text-align: center; color: #667eea; margin: 40px 0;">Nossos Cursos</h2>
-        
-        <div class="courses">
-            <div class="course-card">
-                <h3>🐍 Python para Iniciantes</h3>
-                <p>Aprenda programação Python do zero. Ideal para quem está começando sua jornada na tech.</p>
-                <span class="badge">Online</span>
-                <span class="badge">Iniciante</span>
-                <div class="rating">⭐ 4.8/5 (150 alunos)</div>
-            </div>
+<a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-            <div class="course-card">
-                <h3>🌐 Web Development Completo</h3>
-                <p>HTML, CSS, JavaScript e frameworks modernos. Do frontend ao backend com as melhores práticas.</p>
-                <span class="badge">Online</span>
-                <span class="badge">Avançado</span>
-                <div class="rating">⭐ 4.9/5 (320 alunos)</div>
-            </div>
-
-            <div class="course-card">
-                <h3>📊 Data Science & Machine Learning</h3>
-                <p>Análise de dados, visualização e modelos de ML com Python. Transforme dados em decisões.</p>
-                <span class="badge">Online</span>
-                <span class="badge">Intermediário</span>
-                <div class="rating">⭐ 4.7/5 (220 alunos)</div>
-            </div>
-
-            <div class="course-card">
-                <h3>🎯 Gestão de Projetos Ágil</h3>
-                <p>Scrum, Kanban e metodologias ágeis aplicadas em projetos reais. Lidere equipes eficientemente.</p>
-                <span class="badge">Online</span>
-                <span class="badge">Intermediário</span>
-                <div class="rating">⭐ 4.6/5 (180 alunos)</div>
-            </div>
-
-            <div class="course-card">
-                <h3>🎨 UI/UX Design Essentials</h3>
-                <p>Princípios de design, prototipagem e usabilidade. Crie interfaces que as pessoas amam.</p>
-                <span class="badge">Online</span>
-                <span class="badge">Intermediário</span>
-                <div class="rating">⭐ 4.8/5 (260 alunos)</div>
-            </div>
-
-            <div class="course-card">
-                <h3>☁️ Cloud & DevOps Mastery</h3>
-                <p>AWS, Docker, Kubernetes e práticas modernas de deployment. Infraestrutura do futuro.</p>
-                <span class="badge">Online</span>
-                <span class="badge">Avançado</span>
-                <div class="rating">⭐ 4.9/5 (280 alunos)</div>
-            </div>
-        </div>
-
-        <div class="highlight">
-            <strong>💡 Benefícios:</strong> Certificados reconhecidos • Acesso vitalício • Comunidade ativa • Suporte dedicado • Atualizações gratuitas
-        </div>
-
-        <form action="/obrigado.html" method="POST">
-            <h2>Inscreva-se Agora</h2>
-            <div class="form-group">
-                <label for="name">Nome Completo *</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">E-mail *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Telefone (WhatsApp)</label>
-                <input type="tel" id="phone" name="phone">
-            </div>
-            <div class="form-group">
-                <label for="course">Qual curso te interessa? *</label>
-                <select id="course" name="course" required>
-                    <option value="">-- Selecione um curso --</option>
-                    <option value="python">Python para Iniciantes</option>
-                    <option value="web">Web Development Completo</option>
-                    <option value="data-science">Data Science & Machine Learning</option>
-                    <option value="agile">Gestão de Projetos Ágil</option>
-                    <option value="ux-design">UI/UX Design Essentials</option>
-                    <option value="devops">Cloud & DevOps Mastery</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="message">Mensagem (opcional)</label>
-                <textarea id="message" name="message"></textarea>
-            </div>
-            <button type="submit">📧 Enviar Inscrição</button>
-        </form>
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Navegação principal">
+  <a class="wordmark" href="#inicio" aria-label="Sampa Educacional — início">
+    <span class="wm-mark">
+      <img src="data:image/png;base64,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"
+        alt="Sampa Educacional logomarca" width="44" height="58"
+        loading="eager" decoding="async"/>
+    </span>
+    <span class="wm-text">
+      <span class="wm-name">SAMPA</span>
+      <span class="wm-sub">Educacional</span>
+    </span>
+  </a>
+  <div class="nav-links">
+    <a href="#manifesto">Manifesto</a>
+    <a href="#ecossistema">Soluções</a>
+    <div class="nav-social">
+      <a href="https://wa.me/5511967992285" target="_blank" rel="noopener" aria-label="WhatsApp Sampa Educacional">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/sampa_edu/" target="_blank" rel="noopener" aria-label="Instagram @sampa_edu">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="1.8"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-width="1.8"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </a>
     </div>
+    <a href="#captura" class="nav-cta">Entrar na Lista VIP</a>
+  </div>
+</nav>
 
-    <footer>
-        <p>&copy; 2024 Sampa Educacional. Todos os direitos reservados. | <a href="#" style="color: #667eea;">Política de Privacidade</a></p>
-    </footer>
+<main id="main-content">
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">Sampa Educacional — Nova Era</span>
+      <h1>Formação Transformadora para um Futuro de <em>Impacto.</em></h1>
+      <p class="hero-body">
+        Uma nova era começou na Sampa Educacional. Sob nova administração estratégica e formato tecnológico, estruturamos um ecossistema completo para transformar seu desenvolvimento intelectual, cultural, tecnológico, pessoal e profissional.
+      </p>
+      <div class="hero-actions">
+        <a href="#captura" class="btn-gold">Quero Entrar na Lista VIP</a>
+        <a href="#ecossistema" class="btn-ghost">Explorar o ecossistema</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-art-bar"></div>
+      <blockquote>O amanhã que você quer construir já começou <em>aqui.</em></blockquote>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"></div>
+
+<!-- MANIFESTO -->
+<section class="section manifesto" id="manifesto">
+  <div class="wrap reveal">
+    <p class="sec-label">O Nosso Manifesto</p>
+    <h2 class="section-h2">O seu futuro merece ser guiado por quem entende do mercado real.</h2>
+    <p class="intro">
+      Na nova era da Sampa Educacional, nós não enxergamos o ensino como um processo estático. Acreditamos em uma formação dinâmica, humana e prática — com conexões diretas ao mercado do mundo real.
+    </p>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="icon" aria-hidden="true">🌱</span>
+        <b>Mudança Sistêmica</b>
+        <p>A educação de verdade abre caminhos inéditos e gera impactos duradouros na sua trajetória pessoal e profissional.</p>
+      </div>
+      <div class="pillar">
+        <span class="icon" aria-hidden="true">💻</span>
+        <b>Formação Holística</b>
+        <p>Conectamos a máxima competência técnica aos valores éticos da era digital exigidos pelo mercado corporativo.</p>
+      </div>
+      <div class="pillar">
+        <span class="icon" aria-hidden="true">🤝</span>
+        <b>Cocriação e Empatia</b>
+        <p>Ambientes inclusivos e colaborativos moldam os líderes globais que o mercado tanto procura e necessita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENTORIA -->
+<section class="section mentoria">
+  <div class="wrap mentoria-grid">
+    <div class="mentoria-panel reveal" aria-hidden="true">
+      <div class="symbol" aria-hidden="true"><img src="data:image/png;base64,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" alt="" width="64" height="88" loading="lazy" decoding="async" style="filter:brightness(0) invert(1) sepia(1) hue-rotate(180deg) saturate(60%) brightness(130%);"/></div>
+      <blockquote>Você sabe exatamente onde quer chegar na sua <em>carreira?</em></blockquote>
+    </div>
+    <div class="mentoria-body reveal">
+      <p class="sec-label">Mentoria Direcionada</p>
+      <h2 class="section-h2">Estratégia e plano de ação individualizado.</h2>
+      <p class="intro">
+        Ter grandes ambições profissionais é o primeiro passo — o que dita o seu sucesso é a estratégia que você usa para alcançá-las. A Sampa Educacional entrega Mentoria Direcionada com foco estratégico e acompanhamento de carreira.
+      </p>
+      <a href="#captura" class="btn-gold" style="margin-top:2rem;display:inline-flex;">Quero conhecer a Mentoria</a>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSSISTEMA -->
+<section class="section ecossistema" id="ecossistema">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">Vitrine do Ecossistema</p>
+      <h2 class="section-h2">Seis ramificações. Uma trajetória.</h2>
+      <p class="intro">
+        Cada frente foi desenhada para atender um momento específico da sua jornada. A disponibilidade de cada oferta é confirmada no contato.
+      </p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <span class="card-icon" aria-hidden="true">🎯</span>
+        <h3>Mentoria de Carreira</h3>
+        <p>Conversa orientada com foco estratégico e plano de ação individualizado para seu desenvolvimento profissional.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon" aria-hidden="true">🎓</span>
+        <h3>Pós-Graduação & Especialização</h3>
+        <p>Nova estrutura acadêmica de alta qualidade com parcerias estratégicas voltadas para seu crescimento profissional.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon" aria-hidden="true">📚</span>
+        <h3>Cursos de Extensão</h3>
+        <p>Workshops, palestras e atualização ágil com networking de elite para acelerar competências específicas.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon" aria-hidden="true">🌎</span>
+        <h3>Inglês & Intercâmbio</h3>
+        <p>Imersão no idioma e experiências de troca cultural para ampliar sua visão de mundo e abrir novas oportunidades.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon" aria-hidden="true">🚀</span>
+        <h3>Direcionamento ao Mercado</h3>
+        <p>Práticas modernas e treinamentos para acelerar o aprendizado prático, analítico e posicionamento profissional.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-icon" aria-hidden="true">🏆</span>
+        <h3>Desenvolvimento de Lideranças</h3>
+        <p>Programas estruturados para desenvolver visão estratégica, comunicação e gestão de alta performance.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTURA VIP -->
+<section class="captura" id="captura">
+  <div class="wrap">
+    <div class="capture-grid">
+      <div class="captura-info reveal">
+        <p class="sec-label">Acesso Exclusivo</p>
+        <h2 class="section-h2">Seu próximo passo pode começar aqui.</h2>
+        <p>Deixe seu interesse registrado para ingressar no fluxo de qualificação restrito da nossa Chancelaria. Nosso time analisará seus dados e metas para propor a melhor aceleração.</p>
+        <div class="promises">
+          <div class="promise-item"><div class="promise-dot"></div>Diagnóstico com especialista Sampa</div>
+          <div class="promise-item"><div class="promise-dot"></div>Atendimento personalizado pelo time de consultores</div>
+          <div class="promise-item"><div class="promise-dot"></div>Informações exclusivas em primeira mão</div>
+          <div class="promise-item"><div class="promise-dot"></div>Sem pressão comercial — primeiro entendemos, depois indicamos</div>
+        </div>
+        <div class="sla-tag">Retorno em até 1 dia útil</div>
+      </div>
+
+      <div class="reveal">
+        <div class="formbox">
+          <h3>🚀 Quero Saber Mais e Entrar na Lista VIP</h3>
+          <p>Preencha os critérios de qualificação para ser atendido de forma exclusiva.</p>
+          <div id="formContent">
+            <form id="interest-form" novalidate>
+              <div class="fields">
+                <!-- Identificação -->
+                <div class="field">
+                  <label for="fname">Nome Completo</label>
+                  <input id="fname" name="name" autocomplete="name" placeholder="Seu nome completo" required/>
+                </div>
+                <div class="field">
+                  <label for="fdob">Data de Nascimento</label>
+                  <input id="fdob" type="date" name="dob"/>
+                </div>
+                <!-- Contato duplo -->
+                <div class="field full">
+                  <label for="femail">E-mail Principal</label>
+                  <input id="femail" type="email" name="email" autocomplete="email" placeholder="seu@email.com" required/>
+                </div>
+                <div class="field">
+                  <label for="fphone">Telefone</label>
+                  <input id="fphone" type="tel" name="phone" autocomplete="tel" placeholder="(11) 99999-9999"/>
+                </div>
+                <div class="field">
+                  <label for="fwa">WhatsApp</label>
+                  <input id="fwa" type="tel" name="whatsapp" placeholder="(11) 99999-9999" required/>
+                </div>
+                <!-- Mapeamento geográfico -->
+                <div class="field">
+                  <label for="fbairro_res">Bairro de Residência</label>
+                  <input id="fbairro_res" name="bairro_residencia" placeholder="Ex: Pinheiros"/>
+                </div>
+                <div class="field">
+                  <label for="fbairro_trab">Bairro de Trabalho</label>
+                  <input id="fbairro_trab" name="bairro_trabalho" placeholder="Ex: Vila Olímpia"/>
+                </div>
+                <!-- Filtro estratégico -->
+                <div class="field full">
+                  <label for="fformation">Qual sua formação atual?</label>
+                  <select id="fformation" name="formacao" required>
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option>Ensino Médio</option>
+                    <option>Graduação Incompleta</option>
+                    <option>Graduação Completa</option>
+                    <option>Pós-Graduação / Especialização</option>
+                    <option>Mestrado ou Doutorado</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label for="finterest">Quais cursos e soluções você deseja conhecer?</label>
+                  <select id="finterest" name="interesse" required>
+                    <option value="" disabled selected>Selecione seu interesse principal</option>
+                    <option>Mentoria de Carreira Profissional</option>
+                    <option>Cursos de Graduação e Pós-Graduação</option>
+                    <option>Workshops, Cursos de Extensão e Cursos Livres</option>
+                    <option>Cursos de Inglês e Intercâmbio</option>
+                    <option>Treinamentos e Direcionamento ao Mercado de Trabalho</option>
+                    <option>Desenvolvimento de Lideranças</option>
+                  </select>
+                </div>
+                <!-- Alinhamento: mentoria -->
+                <div class="field full">
+                  <label>Gostaria de participar de uma Mentoria de Carreira personalizada?</label>
+                  <div class="radio-group">
+                    <label><input type="radio" name="mentoria" value="sim"/> Sim, tenho interesse</label>
+                    <label><input type="radio" name="mentoria" value="nao"/> Não por enquanto</label>
+                  </div>
+                </div>
+                <!-- Alinhamento psicológico -->
+                <div class="field full">
+                  <label for="fdream_p">Qual é o seu maior sonho pessoal? <span class="opt">(opcional)</span></label>
+                  <textarea id="fdream_p" name="sonho_pessoal" placeholder="Compartilhe algo sobre o que você almeja para a sua vida..."></textarea>
+                </div>
+                <div class="field full">
+                  <label for="fdream_c">Qual é o seu maior sonho profissional? <span class="opt">(opcional)</span></label>
+                  <textarea id="fdream_c" name="sonho_profissional" placeholder="Onde você quer chegar na sua carreira?"></textarea>
+                </div>
+                <div class="field full">
+                  <label for="fvip">Como podemos lhe auxiliar de forma ainda mais VIP? <span class="opt">(opcional)</span></label>
+                  <input id="fvip" name="vip_extra" placeholder="Descreva uma necessidade específica..."/>
+                </div>
+              </div>
+              <div class="f-consent">
+                <input type="checkbox" id="fconsent" aria-required="true" aria-describedby="consent-error"/>
+                <label for="fconsent">Concordo com a <a href="#">Política de Privacidade</a> e autorizo o contato da equipe Sampa Educacional.</label>
+              </div>
+              <p id="consent-error" role="alert" aria-live="polite">Aceite a Política de Privacidade para continuar.</p>
+              <button class="btn-submit" type="submit">Garantir Minhas Informações em Primeira Mão</button>
+              <p class="hint">Nossa equipe retornará em até 1 dia útil pelo WhatsApp ou e-mail informado.</p>
+            </form>
+          </div>
+          <div class="success" role="status" tabindex="-1" id="success">
+            <strong>Obrigado pelo interesse — você está na Lista VIP.</strong>
+            <p>Nossa equipe analisará sua solicitação e entrará em contato em até <strong>1 dia útil</strong> pelo WhatsApp ou e-mail informado. Fique atento!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <a class="wordmark footer-brand" href="#inicio" aria-label="Sampa Educacional">
+        <span class="wm-mark">
+          <img src="data:image/png;base64,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"
+            alt="" width="32" height="42"
+            loading="lazy" decoding="async"
+            aria-hidden="true"/>
+        </span>
+        <span class="wm-text">
+          <span class="wm-name">SAMPA</span>
+          <span class="wm-sub">Educacional</span>
+        </span>
+      </a>
+      <p>Chancelaria SAMPA GROUP</p>
+      <div class="footer-legal">
+        © 2026 Sampa Educacional<br>
+        Uma marca do SAMPA.GROUP
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── NAV STICKY ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('stuck', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── SCROLL REVEAL com stagger correto ──
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    const revealEls = document.querySelectorAll('.reveal');
+    // Atribuir índice global para stagger consistente
+    revealEls.forEach(function(el, idx) {
+      el.dataset.revealIdx = idx;
+    });
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          const idx = parseInt(e.target.dataset.revealIdx, 10) || 0;
+          e.target.style.transitionDelay = (idx % 4) * 0.07 + 's';
+          e.target.classList.add('in');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(function(el) { obs.observe(el); });
+  } else {
+    // Reduced motion: mostrar tudo imediatamente
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('in');
+    });
+  }
+
+  // ── FORMULÁRIO ──
+  const form        = document.getElementById('interest-form');
+  const success     = document.getElementById('success');
+  const consentEl   = document.getElementById('fconsent');
+  const consentErr  = document.getElementById('consent-error');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validar consent
+    if (!consentEl.checked) {
+      consentErr.style.display = 'block';
+      consentEl.focus();
+      return;
+    }
+    consentErr.style.display = 'none';
+
+    // Mostrar sucesso
+    form.hidden = true;
+    success.style.display = 'block';
+    requestAnimationFrame(function() {
+      success.focus();
+    });
+    form.reset();
+
+    // Redirecionar para página de obrigado após 800ms (permite leitura da mensagem)
+    setTimeout(function() {
+      window.location.href = 'obrigado.html';
+    }, 800);
+  });
+
+  // ── SMOOTH SCROLL (respeita reduced motion) ──
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      const behavior = prefersReducedMotion ? 'instant' : 'smooth';
+      t.scrollIntoView({ behavior: behavior, block: 'start' });
+    });
+  });
+
+})();
+</script>
 </body>
 </html>
