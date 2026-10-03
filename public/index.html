@@ -169,9 +169,8 @@
     }
     .nav-social svg { width: 22px; height: 22px; fill: none; transition: none; }
     .nav-social a.wa svg { stroke: #25D366; }
-    .nav-social a.ig svg { stroke: #dc2743; }
+    .nav-social a.ig lottie-player { width: 28px; height: 28px; display: block; }
     nav.stuck .nav-social a.wa svg { stroke: #25D366; }
-    nav.stuck .nav-social a.ig svg { stroke: #dc2743; }
 
     nav .nav-links a.nav-cta {
       background: rgba(113,161,201,0.15); color: var(--blue);
@@ -590,6 +589,7 @@
       .wm-sub          { font-size: 0.58rem; letter-spacing: 0.12em; }
     }
   </style>
+  <script defer src="https://unpkg.com/@lottiefiles/lottie-player@2/dist/lottie-player.js"></script>
 </head>
 <body>
 
@@ -619,11 +619,7 @@
         </svg>
       </a>
       <a class="ig" href="https://www.instagram.com/sampa_edu/" target="_blank" rel="noopener" aria-label="Instagram @sampa_edu">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="1.8"/>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-width="1.8"/>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.2" stroke-linecap="round"/>
-        </svg>
+        <lottie-player src="/ig.json" background="transparent" speed="1" style="width:28px;height:28px;" autoplay loop aria-hidden="true"></lottie-player>
       </a>
     </div>
     <a href="#captura" class="nav-cta"><span class="cta-pre">Entrar na </span>Lista VIP</a>
