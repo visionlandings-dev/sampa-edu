@@ -40,7 +40,7 @@ Configure `gh-pages` apontando para `/public`.
 
 ## Domínio
 
-Produção: `https://sampaeducacional.com.br`
+Produção: `https://sampaedu.com`
 
 Configure o domínio em **Vercel → Project → Domains**.
 

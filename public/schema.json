@@ -3,11 +3,11 @@
   "@graph": [
     {
       "@type": "EducationalOrganization",
-      "@id": "https://sampaeducacional.com.br/#organization",
+      "@id": "https://sampaedu.com/#organization",
       "name": "Sampa Educacional",
       "legalName": "LEALI GESTÃO EDUCACIONAL LTDA",
-      "url": "https://sampaeducacional.com.br",
-      "logo": "https://sampaeducacional.com.br/favicon.ico",
+      "url": "https://sampaedu.com",
+      "logo": "https://sampaedu.com/logo.svg",
       "description": "Ecossistema educacional do Grupo Sampa. Mentoria de carreira, pós-graduação, cursos de extensão, inglês, intercâmbio, treinamentos e liderança.",
       "telephone": "+5511967992285",
       "contactPoint": {
@@ -26,56 +26,56 @@
         "itemListElement": [
           {
             "@type": "Course",
-            "@id": "https://sampaeducacional.com.br/#mentoria",
+            "@id": "https://sampaedu.com/#mentoria",
             "name": "Mentoria de Carreira",
             "description": "Conversa orientada com foco estratégico e plano de ação individualizado para desenvolvimento profissional.",
             "courseMode": "online",
-            "provider": { "@id": "https://sampaeducacional.com.br/#organization" },
+            "provider": { "@id": "https://sampaedu.com/#organization" },
             "inLanguage": "pt-BR"
           },
           {
             "@type": "Course",
-            "@id": "https://sampaeducacional.com.br/#posgraduacao",
+            "@id": "https://sampaedu.com/#posgraduacao",
             "name": "Pós-Graduação & Especialização",
             "description": "Nova estrutura acadêmica de alta qualidade com parcerias estratégicas voltadas para crescimento profissional.",
             "courseMode": "blended",
-            "provider": { "@id": "https://sampaeducacional.com.br/#organization" },
+            "provider": { "@id": "https://sampaedu.com/#organization" },
             "inLanguage": "pt-BR"
           },
           {
             "@type": "Course",
-            "@id": "https://sampaeducacional.com.br/#extensao",
+            "@id": "https://sampaedu.com/#extensao",
             "name": "Cursos de Extensão",
             "description": "Workshops, palestras e atualização ágil com networking de elite para acelerar competências específicas.",
             "courseMode": "blended",
-            "provider": { "@id": "https://sampaeducacional.com.br/#organization" },
+            "provider": { "@id": "https://sampaedu.com/#organization" },
             "inLanguage": "pt-BR"
           },
           {
             "@type": "Course",
-            "@id": "https://sampaeducacional.com.br/#ingles",
+            "@id": "https://sampaedu.com/#ingles",
             "name": "Inglês & Intercâmbio",
             "description": "Imersão no idioma e experiências de troca cultural para ampliar visão de mundo e novas oportunidades.",
             "courseMode": "onsite",
-            "provider": { "@id": "https://sampaeducacional.com.br/#organization" },
+            "provider": { "@id": "https://sampaedu.com/#organization" },
             "inLanguage": "pt-BR"
           },
           {
             "@type": "Course",
-            "@id": "https://sampaeducacional.com.br/#mercado",
+            "@id": "https://sampaedu.com/#mercado",
             "name": "Direcionamento ao Mercado",
             "description": "Práticas modernas e treinamentos para acelerar aprendizado prático, analítico e posicionamento profissional.",
             "courseMode": "blended",
-            "provider": { "@id": "https://sampaeducacional.com.br/#organization" },
+            "provider": { "@id": "https://sampaedu.com/#organization" },
             "inLanguage": "pt-BR"
           },
           {
             "@type": "Course",
-            "@id": "https://sampaeducacional.com.br/#lideranca",
+            "@id": "https://sampaedu.com/#lideranca",
             "name": "Desenvolvimento de Lideranças",
             "description": "Programas estruturados para desenvolver visão estratégica, comunicação e gestão de alta performance.",
             "courseMode": "blended",
-            "provider": { "@id": "https://sampaeducacional.com.br/#organization" },
+            "provider": { "@id": "https://sampaedu.com/#organization" },
             "inLanguage": "pt-BR"
           }
         ]
@@ -83,20 +83,20 @@
     },
     {
       "@type": "WebSite",
-      "@id": "https://sampaeducacional.com.br/#website",
-      "url": "https://sampaeducacional.com.br",
+      "@id": "https://sampaedu.com/#website",
+      "url": "https://sampaedu.com",
       "name": "Sampa Educacional",
-      "publisher": { "@id": "https://sampaeducacional.com.br/#organization" },
+      "publisher": { "@id": "https://sampaedu.com/#organization" },
       "inLanguage": "pt-BR"
     },
     {
       "@type": "WebPage",
-      "@id": "https://sampaeducacional.com.br/#webpage",
-      "url": "https://sampaeducacional.com.br/",
+      "@id": "https://sampaedu.com/#webpage",
+      "url": "https://sampaedu.com/",
       "name": "Sampa Educacional — Formação Transformadora para um Futuro de Impacto",
       "description": "Ecossistema completo para transformar seu desenvolvimento intelectual, cultural, tecnológico, pessoal e profissional. Entre na Lista VIP.",
-      "isPartOf": { "@id": "https://sampaeducacional.com.br/#website" },
-      "about": { "@id": "https://sampaeducacional.com.br/#organization" },
+      "isPartOf": { "@id": "https://sampaedu.com/#website" },
+      "about": { "@id": "https://sampaedu.com/#organization" },
       "inLanguage": "pt-BR",
       "dateModified": "2026-09-25"
     }
