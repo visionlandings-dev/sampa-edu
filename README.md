@@ -55,4 +55,4 @@ Configure o domínio em **Vercel → Project → Domains**.
 
 ## Licença
 
-Propriedade de **LEALI GESTÃO EDUCACIONAL LTDA** — todos os direitos reservados.
+Propriedade de **SAMPA GROUP LTDA** — todos os direitos reservados.
