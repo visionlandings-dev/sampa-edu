@@ -904,16 +904,80 @@
   const consentEl   = document.getElementById('fconsent');
   const consentErr  = document.getElementById('consent-error');
 
-  form.addEventListener('submit', function(e) {
+  // Envio para Supabase (tabela leads_sampaedu → gatilho → notify-lead → Resend)
+  // A chave publicável só permite INSERT (RLS: insert_public); leitura é restrita ao service_role.
+  const SUPABASE_URL = 'https://kjzgoiibnoktjbqjpjry.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_4Vj0XiLq-kCrn1p1tbuc5A_HQbRIbL4';
+  const submitBtn    = form.querySelector('.btn-submit');
+  const submitLabel  = submitBtn.textContent;
+  const consentMsg   = consentErr.textContent;
+
+  function val(name) {
+    const el = form.elements[name];
+    if (!el) return null;
+    const v = (el.value || '').trim();
+    return v === '' ? null : v.slice(0, 2000);
+  }
+
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
+
+    // Campos obrigatórios (o form usa novalidate, então validamos aqui)
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
 
     // Validar consent
     if (!consentEl.checked) {
+      consentErr.textContent = consentMsg;
       consentErr.style.display = 'block';
       consentEl.focus();
       return;
     }
     consentErr.style.display = 'none';
+
+    const lead = {
+      name:              val('name'),
+      dob:               val('dob'),
+      email:             val('email'),
+      phone:             val('phone'),
+      whatsapp:          val('whatsapp'),
+      bairro_residencia: val('bairro_residencia'),
+      bairro_trabalho:   val('bairro_trabalho'),
+      formation:         val('formacao'),
+      interest:          val('interesse'),
+      mentoria:          val('mentoria'),
+      dream_personal:    val('sonho_pessoal'),
+      dream_career:      val('sonho_profissional'),
+      vip_extra:         val('vip_extra'),
+      user_agent:        navigator.userAgent.slice(0, 500),
+      source:            location.hostname || 'sampaeducacional.com.br'
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/leads_sampaedu', {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(lead)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+    } catch (err) {
+      console.error('Falha ao enviar lead:', err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitLabel;
+      consentErr.textContent = 'Não foi possível enviar agora. Tente novamente ou fale conosco pelo WhatsApp.';
+      consentErr.style.display = 'block';
+      return;
+    }
 
     // Mostrar sucesso
     form.hidden = true;
