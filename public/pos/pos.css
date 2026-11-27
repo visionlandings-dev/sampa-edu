@@ -209,7 +209,7 @@ body.pp {
   display: grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items: stretch;
 }
 .pp-express__copy { min-width: 0; padding-block: clamp(2.5rem, 6vw, 4.5rem); }
-.pp-express h1 { color: #fff; font-size: clamp(2.4rem, 6vw, 4rem); margin-top: .5rem; }
+.pp-express h1 { color: #fff; font-size: clamp(2.4rem, 6vw, 4rem); margin-top: .5rem; margin-bottom: .5rem; }
 .pp-express__lead { font-size: 1.12rem; margin-top: 1rem; max-width: 34rem; opacity: .92; }
 .pp-express__photo { position: relative; min-height: 22rem; }
 .pp-express__photo img {
@@ -230,6 +230,19 @@ body.pp {
 .pp-price__inst { font-size: .9rem; font-weight: 600; margin-top: .2rem; }
 .pp-price__deadline { font-size: .8rem; font-weight: 700; margin-top: .45rem; opacity: .85; }
 .pp-express .pp-btn--ghost { color: #fff; }
+
+/* Hero sem foto: painel geométrico com os números do curso */
+.pp-express--panel .pp-wrap { align-items: center; }
+.pp-express__panel {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px; align-self: center;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.16);
+  border-top: 4px solid var(--yellow); border-radius: 1rem; overflow: hidden;
+}
+.pp-stat { background: var(--blue); padding: clamp(1.2rem, 3vw, 2rem); display: flex; flex-direction: column; gap: .3rem; }
+.pp-stat b { font-family: var(--fd); font-size: clamp(2.2rem, 4.5vw, 3.2rem); line-height: 1; color: #fff; letter-spacing: -0.03em; }
+.pp-stat span { font-size: .88rem; font-weight: 600; color: #c9d6e6; }
+.pp-btn--off, .pp-btn--off:hover { background: #d6d6d6 !important; color: #444 !important; cursor: not-allowed; transform: none; }
+.pp-btn--off::after { display: none; }
 
 /* Seções de conteúdo */
 .pp-section { padding-block: clamp(3rem, 7vw, 5rem); }
@@ -469,6 +482,7 @@ body.pp {
   .pp-express h1, .pp-vitrine h1, .pp-escolha h1 { font-size: clamp(2rem, 9vw, 3rem); overflow-wrap: anywhere; hyphens: auto; }
   .pp-express__photo img { object-position: center 8%; }
   .pp-express__photo { min-height: 20rem; margin-inline: -1.25rem; order: -1; }
+  .pp-express__panel { order: 2; margin-bottom: 2.5rem; }
   .pp-express__copy { padding-top: 2rem; }
   .pp-vitrine__photo, .pp-escolha__photo { aspect-ratio: 16 / 11; order: -1; }
   .pp-highlights, .pp-steps { grid-template-columns: 1fr; }

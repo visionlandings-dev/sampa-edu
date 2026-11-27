@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent / "public" / "pos"
 SITE = "https://sampaedu.com"
 WA = "5511967992285"
 GRADE_URL = "https://sampagroup.pvunypublica.com.br/curso/{}"
-ASSET_V = "20261127f"
+ASSET_V = "20261127g"
 DEADLINE_ISO = "2026-11-30T23:59:59-03:00"
 DEADLINE_TXT = "30/11/2026"
 
@@ -161,6 +161,99 @@ MBA = dict(slug="mba-licitacoes-publicas", name="MBA em Licitações Públicas �
                   ("Cidades Inteligentes", 60)])
 
 
+# Textos das páginas individuais dos 12 cursos (base: disciplinas da grade oficial)
+COPY_12 = {
+    "processos-cognitivos-e-aprendizagem": dict(
+        lead="Pós-graduação para educadores e profissionais que querem entender como o cérebro aprende e intervir nas dificuldades de aprendizagem.",
+        chamada="Compreenda os processos que sustentam a aprendizagem",
+        intro="Neurociências, psicologia da aprendizagem e avaliação para identificar dificuldades e planejar intervenções pedagógicas mais eficazes.",
+        highlights=[("Transtornos da aprendizagem", "Identificação e manejo de transtornos e distúrbios no contexto escolar."),
+                    ("Neurociências", "Neurociências do comportamento aplicadas às práticas pedagógicas."),
+                    ("Avaliação", "Instrumentos para avaliar a aprendizagem e acompanhar a evolução.")]),
+    "administracao-de-pessoal": dict(
+        lead="Pós-graduação para quem atua ou quer atuar no departamento pessoal com domínio técnico, legal e financeiro.",
+        chamada="Domine a rotina e a estratégia do departamento pessoal",
+        intro="Legislação trabalhista e previdenciária, cargos e salários, saúde ocupacional e controles financeiros para uma gestão de pessoal segura e eficiente.",
+        highlights=[("Direito do trabalho", "Legislação trabalhista e previdenciária aplicada à rotina do DP."),
+                    ("Cargos e salários", "Divisão e modelagem de cargos e estruturas salariais."),
+                    ("Governança em RH", "Controle interno, compliance e sistemas de informação em RH.")]),
+    "treinamento-e-desenvolvimento": dict(
+        lead="Pós-graduação para profissionais de RH e líderes que desenvolvem pessoas e equipes.",
+        chamada="Desenvolva pessoas com método e estratégia",
+        intro="Programas de desenvolvimento, gestão do conhecimento, avaliação de desempenho e planejamento de carreiras, com métodos ágeis e cultura digital.",
+        highlights=[("Programas de desenvolvimento", "Dinâmicas de grupo e planos de desenvolvimento individual."),
+                    ("Desempenho e carreira", "Avaliação de desempenho, coaching e planejamento de carreiras."),
+                    ("Cultura e aprendizagem", "Clima organizacional, gestão do conhecimento e cultura digital.")]),
+    "psicologia-nas-organizacoes": dict(
+        lead="Pós-graduação para quem quer compreender o comportamento humano no trabalho e aplicar esse conhecimento na gestão.",
+        chamada="Entenda as pessoas para transformar as organizações",
+        intro="Psicologia social e do desenvolvimento, cultura e clima, comunicação e liderança para atuar com pessoas e equipes.",
+        highlights=[("Comportamento humano", "Psicologia social e do desenvolvimento aplicadas ao trabalho."),
+                    ("Cultura e clima", "Leitura da cultura e do clima organizacional."),
+                    ("Liderança e consultoria", "Desenvolvimento de equipes e consultoria organizacional.")]),
+    "lideranca-nas-organizacoes": dict(
+        lead="Pós-graduação para gestores e futuros líderes que querem conduzir equipes com competência e visão estratégica.",
+        chamada="Lidere equipes com competência e visão",
+        intro="Fundamentos de administração, competências gerenciais, gestão de pessoas e psicologia dos grupos para liderar com resultado.",
+        highlights=[("Competências gerenciais", "Fundamentos para decidir, delegar e acompanhar resultados."),
+                    ("Gestão de equipes", "Liderança, desenvolvimento e gestão de equipes."),
+                    ("Comunicação", "Comunicação empresarial e psicologia dos grupos.")]),
+    "gestao-estrategica-de-pessoas": dict(
+        lead="Pós-graduação para profissionais de RH que querem atuar de forma estratégica em todo o ciclo de gestão de pessoas.",
+        chamada="Conduza a gestão de pessoas de forma estratégica",
+        intro="Recrutamento e seleção, treinamento, departamento pessoal, acessibilidade e liderança integrados à estratégia da organização.",
+        highlights=[("Recrutamento e seleção", "Atração, seleção e socialização de talentos."),
+                    ("Desenvolvimento", "Treinamento, desenvolvimento e liderança de equipes."),
+                    ("Gestão integrada", "RH, departamento pessoal e normas de acessibilidade.")]),
+    "inteligencia-de-mercado": dict(
+        lead="Pós-graduação para quem quer transformar dados de mercado em decisões de marketing e de negócio.",
+        chamada="Transforme informação em vantagem competitiva",
+        intro="Análise de tendências e comportamento, estratégias de marketing e growth, processos e inovação aplicados à tomada de decisão.",
+        highlights=[("Análise de mercado", "Tendências, comportamento e movimentos do mercado."),
+                    ("Growth marketing", "Estratégias de marketing e de crescimento."),
+                    ("Inovação e processos", "Tecnologia aplicada ao marketing e modelagem de processos.")]),
+    "gestao-estrategica-de-vendas": dict(
+        lead="Pós-graduação para profissionais e gestores comerciais que querem vender mais e liderar times de vendas.",
+        chamada="Estruture vendas com estratégia e método",
+        intro="Técnicas de vendas, negociação, formação de preços, relacionamento e pesquisa de mercado para resultados comerciais consistentes.",
+        highlights=[("Técnicas e negociação", "Técnicas de vendas, compras e negociação."),
+                    ("Preço e custos", "Formação de preços e gestão de custos e finanças."),
+                    ("Relacionamento", "Pós-venda, fidelização e liderança de equipes comerciais.")]),
+    "gestao-em-administracao-e-marketing": dict(
+        lead="Pós-graduação para quem quer unir gestão de negócios e marketing com visão estratégica e uso de dados.",
+        chamada="Una gestão e marketing para gerar resultados",
+        intro="Fundamentos de administração e marketing, estratégias de negócio, gestão de projetos e ciência de dados aplicada ao marketing.",
+        highlights=[("Estratégia de negócios", "Gestão, organização empresarial e empreendedorismo."),
+                    ("Marketing com dados", "Ciência de dados e sistemas de informação de marketing."),
+                    ("Projetos", "Gestão de projetos para tirar as estratégias do papel.")]),
+    "sistemas-de-informacoes-gerenciais": dict(
+        lead="Pós-graduação para quem quer conectar tecnologia da informação e gestão nas organizações.",
+        chamada="Use a tecnologia a favor da gestão",
+        intro="Planejamento estratégico de TI, banco de dados, engenharia de software e sistemas de informação para apoiar decisões gerenciais.",
+        highlights=[("Estratégia de TI", "Planejamento estratégico e gestão de TI e comunicação."),
+                    ("Dados e software", "Bancos de dados, estrutura de dados e engenharia de software."),
+                    ("Sistemas gerenciais", "Implantação e administração de sistemas de informação.")]),
+    "governanca-corporativa-e-compliance": dict(
+        lead="Pós-graduação para quem quer atuar com governança, controles internos e conformidade nas organizações.",
+        chamada="Fortaleça governança, controles e conformidade",
+        intro="Direito empresarial e civil, compliance no setor público e privado, ESG e controladoria para uma gestão íntegra e segura.",
+        highlights=[("Compliance", "Controle interno e compliance, inclusive na administração pública."),
+                    ("Base jurídica", "Fundamentos do direito, direito empresarial e civil."),
+                    ("ESG e controladoria", "Sustentabilidade, governança e planejamento financeiro.")]),
+    "gestao-financeira-e-contabil": dict(
+        lead="Pós-graduação para quem quer dominar finanças e contabilidade para apoiar decisões de negócio.",
+        chamada="Domine os números que orientam as decisões",
+        intro="Fundamentos e teorias contábeis, finanças corporativas, análise de demonstrações e custos com visão de planejamento estratégico.",
+        highlights=[("Contabilidade", "Fundamentos, teorias contábeis e contabilidade de custos."),
+                    ("Finanças corporativas", "Gestão financeira e análise de demonstrações."),
+                    ("Planejamento", "Planejamento estratégico e empreendedorismo.")]),
+}
+
+
+def course12(area, slug, name, cid, grade):
+    return dict(slug=slug, name=name, id=cid, grade=grade, img=None, area=area, **COPY_12[slug])
+
+
 # ---------------------------------------------------------------- helpers
 def wa(course: str = "") -> str:
     if course:
@@ -171,7 +264,10 @@ def wa(course: str = "") -> str:
     return f"https://wa.me/{WA}?text={quote(msg)}"
 
 
-def cta(slug, course, cls="pp-btn pp-btn--yellow", label="Quero me matricular"):
+def cta(slug, course, cls="pp-btn pp-btn--yellow", label="Quero me matricular", ch="site"):
+    if ch == "hotmart":
+        # href final vem de HOTMART em /pos/pos.js (link de pagamento Hotmart de cada produto)
+        return f'<a class="{cls}" href="#comprar" data-hotmart="{slug}">{label}</a>'
     return f'<a class="{cls}" href="/pos/matricula?curso={slug}">{label}</a>'
 
 
@@ -180,16 +276,18 @@ def grade_link(cid, label="Ver grade oficial", cls="pp-link"):
             f'{label}<span class="sr-only"> (abre o portal da Faculdade Unypública)</span></a>')
 
 
-def head(title, desc, path, img, jsonld):
+def head(title, desc, path, img, jsonld, canonical=None, noindex=False):
+    canonical = canonical or path
+    robots = '\n  <meta name="robots" content="noindex"/>' if noindex else ""
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#003164"/>
-  <title>{escape(title)}</title>
+  <title>{escape(title)}</title>{robots}
   <meta name="description" content="{escape(desc)}"/>
-  <link rel="canonical" href="{SITE}{path}"/>
+  <link rel="canonical" href="{SITE}{canonical}"/>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
   <meta property="og:type" content="website"/>
   <meta property="og:locale" content="pt_BR"/>
@@ -209,8 +307,16 @@ def head(title, desc, path, img, jsonld):
 """
 
 
-def top(dark=False):
+def top(dark=False, ch="site"):
     cls = "pp-top pp-top--dark" if dark else "pp-top"
+    if ch == "hotmart":
+        # Canal Hotmart: sem links de saída (a compra acontece só no checkout do Hotmart)
+        return f"""<header class="{cls}">
+  <div class="pp-wrap">
+    <span class="pp-brand">Sampa <span>Educacional</span></span>
+  </div>
+</header>
+"""
     return f"""<header class="{cls}">
   <div class="pp-wrap">
     <a class="pp-brand" href="/" aria-label="Sampa Educacional — página inicial">Sampa <span>Educacional</span></a>
@@ -225,11 +331,13 @@ def top(dark=False):
 """
 
 
-def ribbon():
-    return (f'<div class="pp-ribbon js-promo" role="note">Black November · {BLACK["off"]} até {DEADLINE_TXT} '
+def ribbon(ch="site", off=True):
+    fim = ("Consulte as condições atuais pelo WhatsApp." if ch == "site"
+           else "Confira as condições atuais na página de pagamento.")
+    oferta = f'{BLACK["off"]} até' if off else "condição especial até"
+    return (f'<div class="pp-ribbon js-promo" role="note">Black November · {oferta} {DEADLINE_TXT} '
             f'· termina em <b data-countdown>3 dias</b></div>\n'
-            f'<div class="pp-ribbon js-ended" role="note">A condição Black November terminou em {DEADLINE_TXT}. '
-            f'Consulte as condições atuais pelo WhatsApp.</div>\n')
+            f'<div class="pp-ribbon js-ended" role="note">A condição Black November terminou em {DEADLINE_TXT}. {fim}</div>\n')
 
 
 def price_block(show_from=True):
@@ -248,26 +356,33 @@ IES_LINE = ('<p class="pp-ies">Instituição acadêmica: <strong>Faculdade Unyp�
             'Comercialização e atendimento: <strong>Sampa Educacional</strong>.</p>')
 
 
-def steps():
-    return """<section class="pp-section pp-section--soft" aria-labelledby="como-title">
+def steps(ch="site"):
+    if ch == "hotmart":
+        items = ('<li><b>Compra segura</b><p>Você conclui o pagamento na página de pagamento da Hotmart, por Pix ou cartão.</p></li>\n'
+                 '      <li><b>Matrícula confirmada</b><p>A Sampa Educacional confirma sua matrícula assim que o pagamento é aprovado.</p></li>\n'
+                 '      <li><b>Acesso liberado</b><p>O acesso à plataforma é liberado logo após a confirmação no portal da Faculdade Unypública.</p></li>')
+    else:
+        items = ('<li><b>Dados e pagamento</b><p>Preencha a matrícula e siga para o pagamento seguro, por Pix ou cartão.</p></li>\n'
+                 '      <li><b>Matrícula confirmada</b><p>A Sampa Educacional confirma sua matrícula assim que o pagamento é aprovado.</p></li>\n'
+                 '      <li><b>Acesso liberado</b><p>O acesso à plataforma é liberado logo após a confirmação no portal da Faculdade Unypública.</p></li>')
+    return f"""<section class="pp-section pp-section--soft" aria-labelledby="como-title">
   <div class="pp-wrap">
     <h2 id="como-title" class="pp-rule">Como funciona a matrícula</h2>
     <ol class="pp-steps">
-      <li><b>Escolha e pague</b><p>Fale com a equipe ou use o link de pagamento seguro do curso.</p></li>
-      <li><b>Matrícula confirmada</b><p>A Sampa Educacional confirma sua matrícula assim que o pagamento é aprovado.</p></li>
-      <li><b>Acesso liberado</b><p>O acesso à plataforma é liberado logo após a confirmação no portal da Faculdade Unypública.</p></li>
+      {items}
     </ol>
   </div>
 </section>
 """
 
 
-def foot():
+def foot(ch="site"):
+    links = (f'\n    <p><a href="/">Voltar ao site</a> · <a href="{escape(wa())}" target="_blank" rel="noopener">Falar no WhatsApp</a></p>'
+             if ch == "site" else "")
     return f"""<footer class="pp-foot">
   <div class="pp-wrap">
     <p><strong>Sampa Educacional</strong> · Uma marca do SAMPA.GROUP</p>
-    <p>Cursos de pós-graduação lato sensu da Faculdade Unypública, comercializados pela Sampa Educacional. Condições promocionais sujeitas à disponibilidade e válidas até {DEADLINE_TXT}.</p>
-    <p><a href="/">Voltar ao site</a> · <a href="{escape(wa())}" target="_blank" rel="noopener">Falar no WhatsApp</a></p>
+    <p>Cursos de pós-graduação lato sensu da Faculdade Unypública, comercializados pela Sampa Educacional. Condições promocionais sujeitas à disponibilidade e válidas até {DEADLINE_TXT}.</p>{links}
   </div>
 </footer>
 <script src="/pos/pos.js?v={ASSET_V}" defer></script>
@@ -298,18 +413,40 @@ def grade_list(items, total):
 
 
 # ---------------------------------------------------------------- páginas
-def page_express(c):
-    path = f"/pos/{c['slug']}"
+def course_path(slug, ch="site"):
+    return f"/hotmart/{slug}" if ch == "hotmart" else f"/pos/{slug}"
+
+
+def page_express(c, ch="site"):
+    site_path = f"/pos/{c['slug']}"
+    path = course_path(c["slug"], ch)
     hl = "\n".join(f'      <article class="pp-highlight"><h3>{escape(t)}</h3><p>{escape(p)}</p></article>'
                    for t, p in c["highlights"])
     ben = "\n".join(f"        <li>{escape(b)}</li>" for b in BENEFITS)
     trust = "".join(f"<span>{t}</span>" for t in TRUST)
+    img = c.get("img")
     html = head(f"Pós-graduação em {c['name']} · Black November | Sampa Educacional",
                 f"{c['lead']} 360h, 100% online, Faculdade Unypública. Condição Black November até {DEADLINE_TXT}.",
-                path, c["img"], course_ld(c["name"], c["id"], path, 360))
-    html += top(dark=True) + ribbon()
+                path, img or "black.jpg", course_ld(c["name"], c["id"], site_path, 360),
+                canonical=site_path, noindex=(ch == "hotmart"))
+    if img:
+        visual = (f'<div class="pp-express__photo"><img src="/pos/img/{img}" alt="{escape(c["img_alt"])}" '
+                  f'width="410" height="1072" fetchpriority="high"/></div>')
+    else:
+        visual = """<div class="pp-express__panel" aria-hidden="true">
+      <div class="pp-stat"><b>360h</b><span>carga horária</span></div>
+      <div class="pp-stat"><b>9</b><span>disciplinas</span></div>
+      <div class="pp-stat"><b>100%</b><span>online</span></div>
+      <div class="pp-stat"><b>4</b><span>nota MEC da faculdade</span></div>
+    </div>"""
+    grade_extra = (f'<p style="margin-top:1rem">{grade_link(c["id"], "Ver a grade no portal da Faculdade Unypública")}</p>'
+                   if ch == "site" else "")
+    final_extra = ('<a class="pp-btn pp-btn--ghost" href="/pos/black-november">Ver outras pós-graduações</a>'
+                   if ch == "site" else "")
+    hero_cls = "pp-express" + ("" if img else " pp-express--panel")
+    html += top(dark=True, ch=ch) + ribbon(ch)
     html += f"""<main id="conteudo">
-<section class="pp-express" aria-labelledby="t">
+<section class="{hero_cls}" aria-labelledby="t">
   <div class="pp-wrap">
     <div class="pp-express__copy">
       <p class="pp-eyebrow">Black November</p>
@@ -318,12 +455,12 @@ def page_express(c):
       <div class="pp-chips"><span class="pp-chip">Pós-graduação</span><span class="pp-chip">360h</span><span class="pp-chip">100% online</span><span class="pp-chip">Nota 4 MEC</span></div>
       {IES_LINE}
       {price_block()}
-      <div class="pp-actions">
-        {cta(c['slug'], c['name'])}
+      <div class="pp-actions" id="comprar">
+        {cta(c['slug'], c['name'], ch=ch)}
         <a class="pp-btn pp-btn--ghost" href="#grade">Ver o que você vai estudar</a>
       </div>
     </div>
-    <div class="pp-express__photo"><img src="/pos/img/{c['img']}" alt="{escape(c['img_alt'])}" width="410" height="1072" fetchpriority="high"/></div>
+    {visual}
   </div>
 </section>
 
@@ -342,7 +479,7 @@ def page_express(c):
     <div>
       <h2 id="grade-t" class="pp-rule">Grade curricular</h2>
       {grade_list([(n, 40) for n in c['grade']], 360)}
-      <p style="margin-top:1rem">{grade_link(c['id'], 'Ver a grade no portal da Faculdade Unypública')}</p>
+      {grade_extra}
     </div>
     <div>
       <h2 class="pp-rule">O que está incluso</h2>
@@ -350,42 +487,50 @@ def page_express(c):
 {ben}
       </ul>
       <div class="pp-trust">{trust}</div>
-      <div class="pp-actions">{cta(c['slug'], c['name'], 'pp-btn pp-btn--blue')}</div>
+      <div class="pp-actions">{cta(c['slug'], c['name'], 'pp-btn pp-btn--blue', ch=ch)}</div>
     </div>
   </div>
 </section>
 
-{steps()}
+{steps(ch)}
 <section class="pp-section pp-final" aria-labelledby="final-t">
   <div class="pp-wrap">
     <h2 id="final-t">Garanta a condição Black November</h2>
     <p class="js-promo">{BLACK['por']} à vista ou {BLACK['parc']}, até {DEADLINE_TXT}.</p>
     <div class="pp-actions">
-      {cta(c['slug'], c['name'])}
-      <a class="pp-btn pp-btn--ghost" href="/pos/black-november">Ver outras pós-graduações</a>
+      {cta(c['slug'], c['name'], ch=ch)}
+      {final_extra}
     </div>
   </div>
 </section>
 </main>
 """
-    return html + foot()
+    return html + foot(ch)
 
 
-def page_mba():
+def page_mba(ch="site"):
     c = MBA
-    path = f"/pos/{c['slug']}"
+    site_path = f"/pos/{c['slug']}"
+    path = course_path(c["slug"], ch)
     acc = []
     for i, (n, h) in enumerate(c["grade"], 1):
         acc.append(f"""      <details>
         <summary><span>Disciplina {i} – {escape(n)}</span><span class="h">{h}h</span></summary>
-        <div class="pp-acc__body"><p>Disciplina {i} de {len(c['grade'])} · {h} horas · 100% online. A ementa completa está na grade oficial da Faculdade Unypública.</p></div>
+        <div class="pp-acc__body"><p>Disciplina {i} de {len(c['grade'])} · {h} horas · 100% online. Ementa completa disponível após a matrícula.</p></div>
       </details>""")
     total = sum(h for _, h in c["grade"])
     ben = "\n".join(f"        <li>{escape(b)}</li>" for b in BENEFITS)
+    grade_extra = (f'<p style="margin-top:1rem">{grade_link(c["id"], "Ver a grade no portal da Faculdade Unypública")}</p>'
+                   if ch == "site" else "")
+    final_extra = ('<a class="pp-btn pp-btn--ghost" href="/pos/black-november">Ver outras pós-graduações</a>'
+                   if ch == "site" else "")
+    ended_txt = ("Fale com a equipe para conhecer as condições atuais." if ch == "site"
+                 else "Confira as condições atuais na página de pagamento.")
     html = head(f"{c['name']} | Sampa Educacional",
                 f"{c['lead']} {total}h, 100% online, Faculdade Unypública.",
-                path, c["img"], course_ld(c["name"], c["id"], path, total))
-    html += top() + f"""<main id="conteudo">
+                path, c["img"], course_ld(c["name"], c["id"], site_path, total),
+                canonical=site_path, noindex=(ch == "hotmart"))
+    html += top(ch=ch) + ribbon(ch, off=False) + f"""<main id="conteudo">
 <section class="pp-vitrine" aria-labelledby="t">
   <div class="pp-wrap">
     <div>
@@ -394,9 +539,9 @@ def page_mba():
       <p class="pp-vitrine__lead">{escape(c['lead'])}</p>
       <div class="pp-chips"><span class="pp-chip">Pós-graduação</span><span class="pp-chip">{total}h</span><span class="pp-chip">100% online</span><span class="pp-chip">Nota 4 MEC</span></div>
       {IES_LINE}
-      <div class="pp-actions">
+      <div class="pp-actions" id="comprar">
         <a class="pp-btn pp-btn--blue" href="#grade">Ver grade e condições</a>
-        {cta(c['slug'], c['short'], 'pp-btn pp-btn--ghost')}
+        {cta(c['slug'], c['short'], 'pp-btn pp-btn--ghost', ch=ch)}
       </div>
     </div>
     <div class="pp-vitrine__photo"><img src="/pos/img/{c['img']}" alt="{escape(c['img_alt'])}" width="417" height="684" fetchpriority="high"/></div>
@@ -411,15 +556,15 @@ def page_mba():
 {chr(10).join(acc)}
       </div>
       <p class="pp-grade__total"><span>Carga horária total</span><span>{total}h</span></p>
-      <p style="margin-top:1rem">{grade_link(c['id'], 'Ver a grade no portal da Faculdade Unypública')}</p>
+      {grade_extra}
     </div>
     <div>
       <div class="pp-box" id="condicoes">
         <h3>Condições Black November</h3>
         <p class="js-promo">Mesma condição das pós-graduações da campanha, válida até {DEADLINE_TXT}.</p>
         {price_block(show_from=False)}
-        <p class="js-ended">A condição Black November terminou. Fale com a equipe para conhecer as condições atuais.</p>
-        <div class="pp-actions">{cta(c['slug'], c['short'], 'pp-btn pp-btn--yellow pp-btn--block')}</div>
+        <p class="js-ended">A condição Black November terminou. {ended_txt}</p>
+        <div class="pp-actions">{cta(c['slug'], c['short'], 'pp-btn pp-btn--yellow pp-btn--block', ch=ch)}</div>
       </div>
       <h2 class="pp-rule" style="margin-top:2.5rem">O que está incluso</h2>
       <ul class="pp-benefits">
@@ -429,19 +574,19 @@ def page_mba():
   </div>
 </section>
 
-{steps()}
+{steps(ch)}
 <section class="pp-section pp-final" aria-labelledby="final-t">
   <div class="pp-wrap">
     <h2 id="final-t">Aprofunde sua atuação em contratações públicas</h2>
     <div class="pp-actions">
-      {cta(c['slug'], c['short'])}
-      <a class="pp-btn pp-btn--ghost" href="/pos/black-november">Ver outras pós-graduações</a>
+      {cta(c['slug'], c['short'], ch=ch)}
+      {final_extra}
     </div>
   </div>
 </section>
 </main>
 """
-    return html + foot()
+    return html + foot(ch)
 
 
 def page_black():
@@ -468,7 +613,7 @@ def page_black():
         </details>
         <div class="pp-course__actions">
           {cta(slug, name, 'pp-btn pp-btn--blue')}
-          {grade_link(cid, 'Grade oficial', 'pp-btn pp-btn--ghost')}
+          <a class="pp-btn pp-btn--ghost" href="/pos/{slug}">Ver detalhes do curso</a>
         </div>
       </article>""")
         sections.append(f"""  <section class="pp-area" id="{k}" aria-labelledby="{k}-t">
@@ -640,11 +785,7 @@ def page_matricula():
 """
     courses = {}
     for slug, name, grp in all_courses():
-        if slug == MBA["slug"] or any(c["slug"] == slug for c in EXPRESS):
-            page = f"/pos/{slug}"
-        else:
-            area = next(a for a, s2, *_ in COURSES_12 if s2 == slug)
-            page = f"/pos/black-november#{area}"
+        page = f"/pos/{slug}"
         courses[slug] = {"name": name, "page": page, "price": SHOW_PRICE_360,
                          "from": slug != MBA["slug"]}
     data = {"courses": courses, "wa": WA,
@@ -656,12 +797,17 @@ def page_matricula():
 
 def main():
     ROOT.mkdir(parents=True, exist_ok=True)
-    for c in EXPRESS:
+    hot = ROOT.parent / "hotmart"
+    hot.mkdir(parents=True, exist_ok=True)
+    pages = EXPRESS + [course12(*c) for c in COURSES_12]
+    for c in pages:
         (ROOT / f"{c['slug']}.html").write_text(page_express(c), encoding="utf-8")
+        (hot / f"{c['slug']}.html").write_text(page_express(c, ch="hotmart"), encoding="utf-8")
     (ROOT / f"{MBA['slug']}.html").write_text(page_mba(), encoding="utf-8")
+    (hot / f"{MBA['slug']}.html").write_text(page_mba(ch="hotmart"), encoding="utf-8")
     (ROOT / "black-november.html").write_text(page_black(), encoding="utf-8")
     (ROOT / "matricula.html").write_text(page_matricula(), encoding="utf-8")
-    print("ok:", sorted(p.name for p in ROOT.glob("*.html")))
+    print("site:", len(list(ROOT.glob("*.html"))), "| hotmart:", len(list((ROOT.parent / "hotmart").glob("*.html"))))
 
 
 if __name__ == "__main__":
