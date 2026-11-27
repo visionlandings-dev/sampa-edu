@@ -72,6 +72,30 @@
 .sampa-pos__actions a::after { content: "→"; }
 .sampa-pos__card--express a { background: var(--pos-yellow); color: var(--pos-ink); }
 .sampa-pos a:hover { text-decoration: underline; }
+
+/* Variante em destaque no topo da home (antes do hero) */
+.sampa-pos--top {
+  background: #0A192F;
+  color: #fff;
+  padding-top: clamp(7.5rem, 12vw, 9.5rem);
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+  border-bottom: 3px solid #D4AF37;
+}
+.sampa-pos--top .sampa-pos__heading h2 { color: #fff; }
+.sampa-pos--top .sampa-pos__heading p { color: #A0AEC0; }
+.sampa-pos__tag {
+  display: inline-block; margin: 0 0 1rem !important; padding: .35rem .8rem;
+  background: var(--pos-yellow); color: var(--pos-ink) !important; border-radius: .4rem;
+  font-family: "Space Grotesk", system-ui, sans-serif; font-weight: 700; font-size: .9rem;
+}
+.sampa-pos--top .sampa-pos__card { border-color: rgba(255,255,255,.14); border-top-color: var(--pos-edu-blue); }
+.sampa-pos--top .sampa-pos__card--express {
+  background: #003164; border-color: rgba(250,182,0,.35); border-top-color: var(--pos-yellow);
+}
+.sampa-pos--top a:focus-visible { outline-color: var(--pos-yellow); }
+/* Hero deixa de ser a primeira dobra: menos respiro no topo e sem altura de tela cheia */
+.sampa-pos--top ~ .hero .hero-inner { padding-top: 5rem; padding-bottom: 5rem; min-height: auto; }
+.pp-ended .sampa-pos__tag { display: none; }
 .sampa-pos a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
 @media (max-width: 960px) {
   .sampa-pos__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -585,10 +585,11 @@
       .wm-mark img     { width: 36px; }
       .wm-name         { font-size: 1.1rem; }
       .wm-sub          { font-size: 0.58rem; letter-spacing: 0.12em; }
+      .hero h1         { font-size: clamp(1.9rem, 8.2vw, 2.6rem); }
     }
   </style>
   <script defer src="https://unpkg.com/@lottiefiles/lottie-player@2/dist/lottie-player.js"></script>
-  <link rel="stylesheet" href="/pos/pos.css?v=20261127b"/>
+  <link rel="stylesheet" href="/pos/pos.css?v=20261127c"/>
 </head>
 <body>
 
@@ -622,33 +623,11 @@
 
 <main id="main-content">
 
-<!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="hero-grid-bg" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div>
-      <h1>Formação Transformadora para um Futuro de <em>Impacto.</em></h1>
-      <p class="hero-body">
-        Com tecnologia como fundação, a Sampa Educacional estruturou um ecossistema completo para transformar seu desenvolvimento intelectual, cultural, tecnológico, pessoal e profissional.
-      </p>
-      <div class="hero-actions">
-        <a href="#captura" class="btn-gold">Quero Entrar na Lista VIP</a>
-        <a href="#ecossistema" class="btn-ghost">Explorar o ecossistema</a>
-      </div>
-    </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="hero-art-bar"></div>
-      <blockquote>O amanhã que você quer construir já começou <em>aqui.</em></blockquote>
-    </div>
-  </div>
-</section>
-
-<div class="band" aria-hidden="true"></div>
-
 <!-- PÓS-GRADUAÇÕES (Faculdade Unypública · Black November) -->
-<section class="sampa-pos" id="pos-graduacoes" aria-labelledby="pos-title">
+<section class="sampa-pos sampa-pos--top" id="pos-graduacoes" aria-labelledby="pos-title">
   <div class="sampa-pos__wrap">
     <header class="sampa-pos__heading">
+      <p class="sampa-pos__tag js-promo">Black November · condições especiais até 30/11</p>
       <h2 id="pos-title">Pós-graduações</h2>
       <p>Cursos da Faculdade Unypública comercializados pela Sampa Educacional.</p>
     </header>
@@ -681,6 +660,30 @@
     </div>
   </div>
 </section>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div>
+      <h1>Formação Transformadora para um Futuro de <em>Impacto.</em></h1>
+      <p class="hero-body">
+        Com tecnologia como fundação, a Sampa Educacional estruturou um ecossistema completo para transformar seu desenvolvimento intelectual, cultural, tecnológico, pessoal e profissional.
+      </p>
+      <div class="hero-actions">
+        <a href="#captura" class="btn-gold">Quero Entrar na Lista VIP</a>
+        <a href="#ecossistema" class="btn-ghost">Explorar o ecossistema</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-art-bar"></div>
+      <blockquote>O amanhã que você quer construir já começou <em>aqui.</em></blockquote>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"></div>
+
 
 <!-- MANIFESTO -->
 <section class="section manifesto" id="manifesto">
@@ -1066,5 +1069,6 @@
 
 })();
 </script>
+<script src="/pos/pos.js?v=20261127c" defer></script>
 </body>
 </html>
