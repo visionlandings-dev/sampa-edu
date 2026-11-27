@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent / "public" / "pos"
 SITE = "https://sampaedu.com"
 WA = "5511967992285"
 GRADE_URL = "https://sampagroup.pvunypublica.com.br/curso/{}"
-ASSET_V = "20261127"
+ASSET_V = "20261127b"
 DEADLINE_ISO = "2026-11-30T23:59:59-03:00"
 DEADLINE_TXT = "30/11/2026"
 
@@ -162,9 +162,12 @@ MBA = dict(slug="mba-licitacoes-publicas", name="MBA em Licitações Públicas �
 
 
 # ---------------------------------------------------------------- helpers
-def wa(course: str) -> str:
-    msg = (f"Olá! Tenho interesse na pós-graduação em {course} (Black November). "
-           "Pode me ajudar com a matrícula?")
+def wa(course: str = "") -> str:
+    if course:
+        msg = (f"Olá! Tenho interesse na pós-graduação em {course} (Black November). "
+               "Pode me ajudar com a matrícula?")
+    else:
+        msg = "Olá! Quero conhecer as pós-graduações da Black November da Sampa Educacional."
     return f"https://wa.me/{WA}?text={quote(msg)}"
 
 
@@ -264,7 +267,7 @@ def foot():
   <div class="pp-wrap">
     <p><strong>Sampa Educacional</strong> · Uma marca do SAMPA.GROUP</p>
     <p>Cursos de pós-graduação lato sensu da Faculdade Unypública, comercializados pela Sampa Educacional. Condições promocionais sujeitas à disponibilidade e válidas até {DEADLINE_TXT}.</p>
-    <p><a href="/">Voltar ao site</a> · <a href="{escape(wa('pós-graduação'))}" target="_blank" rel="noopener">Falar no WhatsApp</a></p>
+    <p><a href="/">Voltar ao site</a> · <a href="{escape(wa())}" target="_blank" rel="noopener">Falar no WhatsApp</a></p>
   </div>
 </footer>
 <script src="/pos/pos.js?v={ASSET_V}" defer></script>

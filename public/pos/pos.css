@@ -73,8 +73,14 @@
 .sampa-pos__card--express a { background: var(--pos-yellow); color: var(--pos-ink); }
 .sampa-pos a:hover { text-decoration: underline; }
 .sampa-pos a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
-@media (max-width: 760px) {
-  .sampa-pos__grid { grid-template-columns: 1fr; }
+@media (max-width: 960px) {
+  .sampa-pos__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sampa-pos__card--express { grid-column: 1 / -1; }
+  .sampa-pos__card--express .sampa-pos__actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .sampa-pos__grid,
+  .sampa-pos__card--express .sampa-pos__actions { grid-template-columns: 1fr; }
 }
 
 /* ---------- Páginas /pos/* ---------- */
