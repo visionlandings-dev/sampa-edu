@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent / "public" / "pos"
 SITE = "https://sampaedu.com"
 WA = "5511967992285"
 GRADE_URL = "https://sampagroup.pvunypublica.com.br/curso/{}"
-ASSET_V = "20261127e"
+ASSET_V = "20261127f"
 DEADLINE_ISO = "2026-11-30T23:59:59-03:00"
 DEADLINE_TXT = "30/11/2026"
 
@@ -232,11 +232,12 @@ def ribbon():
             f'Consulte as condições atuais pelo WhatsApp.</div>\n')
 
 
-def price_block():
+def price_block(show_from=True):
     if not SHOW_PRICE_360:
         return ""
+    de = f'<p class="pp-price__from">De <s>{BLACK["de"]}</s> por</p>' if show_from else '<p class="pp-price__from">Condição Black November</p>'
     return f"""<div class="pp-price js-promo">
-          <p class="pp-price__from">De <s>{BLACK["de"]}</s> por</p>
+          {de}
           <p class="pp-price__value">{BLACK["por"]} <small>à vista</small></p>
           <p class="pp-price__inst">ou {BLACK["parc"]}</p>
           <p class="pp-price__deadline">Condição Black November válida até {DEADLINE_TXT}</p>
@@ -383,7 +384,7 @@ def page_mba():
     ben = "\n".join(f"        <li>{escape(b)}</li>" for b in BENEFITS)
     html = head(f"{c['name']} | Sampa Educacional",
                 f"{c['lead']} {total}h, 100% online, Faculdade Unypública.",
-                path, c["img"], course_ld(c["name"], c["id"], path, total, price=False))
+                path, c["img"], course_ld(c["name"], c["id"], path, total))
     html += top() + f"""<main id="conteudo">
 <section class="pp-vitrine" aria-labelledby="t">
   <div class="pp-wrap">
@@ -415,7 +416,9 @@ def page_mba():
     <div>
       <div class="pp-box" id="condicoes">
         <h3>Condições Black November</h3>
-        <p>O MBA tem condição comercial própria nesta campanha. Fale com a equipe da Sampa Educacional para receber o valor e as formas de pagamento.</p>
+        <p class="js-promo">Mesma condição das pós-graduações da campanha, válida até {DEADLINE_TXT}.</p>
+        {price_block(show_from=False)}
+        <p class="js-ended">A condição Black November terminou. Fale com a equipe para conhecer as condições atuais.</p>
         <div class="pp-actions">{cta(c['slug'], c['short'], 'pp-btn pp-btn--yellow pp-btn--block')}</div>
       </div>
       <h2 class="pp-rule" style="margin-top:2.5rem">O que está incluso</h2>
@@ -642,7 +645,8 @@ def page_matricula():
         else:
             area = next(a for a, s2, *_ in COURSES_12 if s2 == slug)
             page = f"/pos/black-november#{area}"
-        courses[slug] = {"name": name, "page": page, "price": slug != MBA["slug"] and SHOW_PRICE_360}
+        courses[slug] = {"name": name, "page": page, "price": SHOW_PRICE_360,
+                         "from": slug != MBA["slug"]}
     data = {"courses": courses, "wa": WA,
             "price": {"de": BLACK["de"], "por": BLACK["por"], "parc": BLACK["parc"], "deadline": DEADLINE_TXT}}
     extra = (f'<script>window.SAMPA_MATRICULA = {json.dumps(data, ensure_ascii=False)};</script>\n'

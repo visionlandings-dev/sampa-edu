@@ -1,6 +1,8 @@
 /* Sampa Educacional — Pós-graduações
  *
- * 1) CHECKOUT: cole aqui o link de pagamento Asaas de cada curso (https://...).
+ * 1) CHECKOUT_PADRAO: link de pagamento Asaas único da campanha (Pix à vista ou cartão
+ *    em até 12x sem juros, R$ 1.327,50), usado por todos os cursos.
+ *    CHECKOUT: opcional — link próprio de um curso; quando preenchido, tem prioridade.
  *    Fluxo: botão "Quero me matricular" → /pos/matricula?curso=<slug> → formulário
  *    → lead salvo no Sampa-Core (edu.leads) → redirecionamento para o link abaixo.
  *    Enquanto o link estiver vazio, o formulário salva o lead e avisa que a equipe
@@ -12,6 +14,8 @@
  */
 (function () {
   'use strict';
+
+  var CHECKOUT_PADRAO = '';
 
   var CHECKOUT = {
     'educacao-especial-e-inclusiva': '',
@@ -35,8 +39,9 @@
 
   window.SampaPos = {
     checkoutFor: function (slug) {
-      var url = CHECKOUT[slug];
-      return url && /^https:\/\//.test(url) ? url : '';
+      var ok = function (u) { return u && /^https:\/\//.test(u); };
+      if (ok(CHECKOUT[slug])) return CHECKOUT[slug];
+      return ok(CHECKOUT_PADRAO) ? CHECKOUT_PADRAO : '';
     },
     promoActive: function () { return Date.now() < PROMO_END.getTime(); }
   };

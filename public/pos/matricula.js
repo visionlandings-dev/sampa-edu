@@ -55,8 +55,8 @@
     $('curso-nome').textContent = c ? c.name : 'Selecione o curso no formulário';
     $('curso-link').href = c ? c.page : '/pos/black-november';
     if (c && c.price && DATA.price.por) {
-      price.textContent = 'De ' + DATA.price.de + ' por ' + DATA.price.por + ' à vista ou ' +
-        DATA.price.parc + ', até ' + DATA.price.deadline + '.';
+      price.textContent = (c.from === false ? 'Condição Black November: ' : 'De ' + DATA.price.de + ' por ') +
+        DATA.price.por + ' à vista ou ' + DATA.price.parc + ', até ' + DATA.price.deadline + '.';
     } else if (c) {
       price.textContent = 'A condição Black November deste curso é confirmada pela equipe após o envio.';
     } else {
