@@ -93,7 +93,6 @@
     if (!$('fconsent').checked) { showError('Aceite a Política de Privacidade para continuar.', $('fconsent')); return; }
 
     var c = courseInfo();
-    var mentoria = (form.querySelector('input[name="mentoria"]:checked') || {}).value || null;
     var matricula = {
       curso_slug: sel.value,
       curso: c.name,
@@ -105,9 +104,6 @@
       whatsapp: val('whatsapp'),
       cep: digits(cep.value),
       formation: val('formacao'),
-      mentoria: mentoria,
-      dream_personal: val('sonho_pessoal'),
-      dream_career: val('sonho_profissional'),
       vip_extra: val('vip_extra'),
       user_agent: navigator.userAgent.slice(0, 500),
       source: (location.hostname || 'sampaedu.com') + '/pos/matricula'

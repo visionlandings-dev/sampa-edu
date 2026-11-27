@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent / "public" / "pos"
 SITE = "https://sampaedu.com"
 WA = "5511967992285"
 GRADE_URL = "https://sampagroup.pvunypublica.com.br/curso/{}"
-ASSET_V = "20261127d"
+ASSET_V = "20261127e"
 DEADLINE_ISO = "2026-11-30T23:59:59-03:00"
 DEADLINE_TXT = "30/11/2026"
 
@@ -611,21 +611,6 @@ def page_matricula():
               <option>Pós-Graduação / Especialização</option>
               <option>Mestrado ou Doutorado</option>
             </select>
-          </div>
-          <div class="pp-field pp-field--full">
-            <span class="pp-label" id="mentoria-l">Gostaria de participar de uma Mentoria de Carreira personalizada?</span>
-            <div class="pp-radios" role="radiogroup" aria-labelledby="mentoria-l">
-              <label><input type="radio" name="mentoria" value="sim"/> Sim, tenho interesse</label>
-              <label><input type="radio" name="mentoria" value="nao"/> Não por enquanto</label>
-            </div>
-          </div>
-          <div class="pp-field pp-field--full">
-            <label for="fdream_p">Qual é o seu maior sonho pessoal? <span class="pp-opt">(opcional)</span></label>
-            <textarea id="fdream_p" name="sonho_pessoal" placeholder="Compartilhe algo sobre o que você almeja para a sua vida..."></textarea>
-          </div>
-          <div class="pp-field pp-field--full">
-            <label for="fdream_c">Qual é o seu maior sonho profissional? <span class="pp-opt">(opcional)</span></label>
-            <textarea id="fdream_c" name="sonho_profissional" placeholder="Onde você quer chegar na sua carreira?"></textarea>
           </div>
           <div class="pp-field pp-field--full">
             <label for="fvip">Como podemos lhe auxiliar de forma ainda mais VIP? <span class="pp-opt">(opcional)</span></label>
