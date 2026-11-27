@@ -1,8 +1,13 @@
 /* Sampa Educacional — Pós-graduações
- * 1) CHECKOUT: cole aqui o link Asaas de cada curso. Enquanto estiver vazio,
- *    o botão continua em "Consultar matrícula" (WhatsApp com o nome do curso).
- * 2) Prazo da Black November: depois de PROMO_END, os blocos de preço
- *    promocional (.js-promo) somem e aparece o aviso (.js-ended).
+ *
+ * 1) CHECKOUT: cole aqui o link de pagamento Asaas de cada curso (https://...).
+ *    Fluxo: botão "Quero me matricular" → /pos/matricula?curso=<slug> → formulário
+ *    → lead salvo no Sampa-Core (edu.leads) → redirecionamento para o link abaixo.
+ *    Enquanto o link estiver vazio, o formulário salva o lead e avisa que a equipe
+ *    envia o link de pagamento pelo WhatsApp ou e-mail.
+ * 2) PROMO_END: prazo da Black November. Depois dele, os blocos .js-promo somem e
+ *    aparecem os avisos .js-ended.
+ *
  * Ao editar, troque o ?v= nos <script src="/pos/pos.js?v=..."> (cache imutável da Vercel).
  */
 (function () {
@@ -28,18 +33,14 @@
 
   var PROMO_END = new Date('2026-11-30T23:59:59-03:00');
 
-  // Checkout por curso
-  document.querySelectorAll('a[data-checkout]').forEach(function (a) {
-    var url = CHECKOUT[a.getAttribute('data-checkout')];
-    if (url && /^https:\/\//.test(url)) {
-      a.href = url;
-      a.removeAttribute('target');
-      a.textContent = a.getAttribute('data-label-checkout') || 'Quero me matricular';
-    }
-  });
+  window.SampaPos = {
+    checkoutFor: function (slug) {
+      var url = CHECKOUT[slug];
+      return url && /^https:\/\//.test(url) ? url : '';
+    },
+    promoActive: function () { return Date.now() < PROMO_END.getTime(); }
+  };
 
-  // Prazo
-  var root = document.documentElement;
   function tick() {
     var ms = PROMO_END - Date.now();
     if (ms <= 0) { document.body.classList.add('pp-ended'); return false; }
@@ -49,5 +50,4 @@
     return true;
   }
   if (tick()) { var t = setInterval(function () { if (!tick()) clearInterval(t); }, 30000); }
-  root.classList.add('js');
 })();

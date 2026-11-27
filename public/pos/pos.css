@@ -374,6 +374,56 @@ body.pp {
 .pp-course__actions .pp-btn { min-height: 44px; padding: .6rem 1rem; font-size: .95rem; }
 .pp-back { margin-top: 2.5rem; }
 
+/* ---------- Matrícula (/pos/matricula) ---------- */
+.pp-matricula h1 { font-size: clamp(2rem, 4.6vw, 3rem); margin-top: .4rem; }
+.pp-matricula__curso { margin-top: 1.6rem; }
+.pp-matricula__curso h2 { font-size: 1.35rem; margin-top: .2rem; }
+.pp-matricula__curso p { margin-top: .5rem; }
+.pp-steps--compact { grid-template-columns: 1fr; gap: .6rem; margin-top: 1.6rem; }
+.pp-steps--compact li { display: grid; grid-template-columns: 2.2rem 1fr; column-gap: .9rem; padding: .9rem 1rem; }
+.pp-steps--compact li::before { grid-row: span 2; margin-bottom: 0; }
+.pp-steps--compact p { margin-top: 0; }
+.pp-formbox {
+  background: #fff; border: 1px solid var(--line); border-top: 6px solid var(--yellow);
+  border-radius: var(--r); padding: clamp(1.25rem, 3vw, 2rem); align-self: start;
+  box-shadow: 0 18px 40px rgba(0, 49, 100, .08);
+}
+.pp-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.pp-field--full { grid-column: 1 / -1; }
+.pp-field label, .pp-label {
+  display: block; font-size: .78rem; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: .4rem;
+}
+.pp-opt { font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--muted); }
+.pp-field input, .pp-field select, .pp-field textarea {
+  width: 100%; min-height: 48px; padding: .75rem .9rem; border: 1px solid #c3ccd6;
+  border-radius: .55rem; background: #f8fafc; color: var(--ink); font: inherit; font-size: 1rem;
+}
+.pp-field textarea { min-height: 84px; resize: vertical; }
+.pp-field input:focus, .pp-field select:focus, .pp-field textarea:focus {
+  outline: 3px solid rgba(250, 182, 0, .55); outline-offset: 1px; border-color: var(--blue); background: #fff;
+}
+.pp-radios {
+  display: flex; flex-wrap: wrap; gap: 1.2rem; padding: .8rem .9rem;
+  border: 1px solid #c3ccd6; border-radius: .55rem; background: #f8fafc;
+}
+.pp-radios label {
+  display: inline-flex; align-items: center; gap: .45rem; margin: 0; font-size: .95rem;
+  font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--text); cursor: pointer;
+}
+.pp-radios input { width: 18px; height: 18px; min-height: 0; accent-color: var(--blue); }
+.pp-consent { display: flex; gap: .7rem; align-items: flex-start; margin-top: 1.2rem; font-size: .88rem; color: var(--muted); }
+.pp-consent input { width: 18px; height: 18px; margin-top: .2rem; flex: none; accent-color: var(--blue); }
+.pp-err { color: #b00020; font-size: .85rem; font-weight: 700; margin-top: .4rem; }
+.pp-formbox .pp-btn--block { margin-top: 1.2rem; min-height: 54px; font-size: 1.05rem; }
+.pp-formbox .pp-btn[disabled] { opacity: .7; cursor: progress; }
+.pp-hint { text-align: center; font-size: .82rem; color: var(--muted); margin-top: .7rem; }
+.pp-success { padding: .5rem 0; }
+.pp-success h2 { font-size: 1.6rem; }
+.pp-success p { margin-top: .8rem; }
+.pp-success .pp-btn { margin-top: .4rem; }
+@media (max-width: 560px) { .pp-fields { grid-template-columns: 1fr; } }
+
 /* Footer */
 .pp-foot { background: var(--ink); color: #d0d4da; font-size: .88rem; padding-block: 2.2rem; }
 .pp-foot .pp-wrap { display: grid; gap: .6rem; }
@@ -384,6 +434,34 @@ body.pp {
 .pp-ended .js-promo { display: none !important; }
 .js-ended { display: none; }
 .pp-ended .js-ended { display: block; }
+
+/* ---------- Efeitos herdados da home: GRID do hero + GLOW dos CTAs ---------- */
+/* Grade 60px igual à .hero-grid-bg da home */
+.sampa-pos--top, .pp-express, .pp-final {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.pp-express, .pp-final { background-color: var(--blue); }
+.sampa-pos--top { background-color: #0A192F; }
+
+/* Brilho pulsante igual ao .btn-gold da home: anima só a opacidade de uma camada (GPU) */
+.sampa-pos__actions a, .pp-btn--yellow { position: relative; isolation: isolate; }
+.sampa-pos__actions a::before, .pp-btn--yellow::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1;
+  box-shadow: 0 0 18px var(--glow), 0 0 32px var(--glow-soft);
+  opacity: 0; animation: pp-glow-pulse 2s ease-in-out infinite alternate;
+}
+.sampa-pos__card--express .sampa-pos__actions a, .pp-btn--yellow {
+  --glow: rgba(250,182,0,0.7); --glow-soft: rgba(250,182,0,0.3);
+}
+.sampa-pos__actions a { --glow: rgba(113,161,201,0.7); --glow-soft: rgba(113,161,201,0.3); }
+.sampa-pos__card--express .sampa-pos__actions a { --glow: rgba(250,182,0,0.7); --glow-soft: rgba(250,182,0,0.3); }
+@keyframes pp-glow-pulse { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .sampa-pos__actions a::before, .pp-btn--yellow::after { animation: none; opacity: .5; }
+}
 
 /* ---------- Responsivo ---------- */
 @media (max-width: 900px) {

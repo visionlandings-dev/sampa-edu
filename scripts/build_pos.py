@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent / "public" / "pos"
 SITE = "https://sampaedu.com"
 WA = "5511967992285"
 GRADE_URL = "https://sampagroup.pvunypublica.com.br/curso/{}"
-ASSET_V = "20261127c"
+ASSET_V = "20261127d"
 DEADLINE_ISO = "2026-11-30T23:59:59-03:00"
 DEADLINE_TXT = "30/11/2026"
 
@@ -171,9 +171,8 @@ def wa(course: str = "") -> str:
     return f"https://wa.me/{WA}?text={quote(msg)}"
 
 
-def cta(slug, course, cls="pp-btn pp-btn--yellow", label="Consultar matrícula"):
-    return (f'<a class="{cls}" href="{escape(wa(course))}" target="_blank" rel="noopener" '
-            f'data-checkout="{slug}">{label}</a>')
+def cta(slug, course, cls="pp-btn pp-btn--yellow", label="Quero me matricular"):
+    return f'<a class="{cls}" href="/pos/matricula?curso={slug}">{label}</a>'
 
 
 def grade_link(cid, label="Ver grade oficial", cls="pp-link"):
@@ -396,7 +395,7 @@ def page_mba():
       {IES_LINE}
       <div class="pp-actions">
         <a class="pp-btn pp-btn--blue" href="#grade">Ver grade e condições</a>
-        {cta(c['slug'], c['short'], 'pp-btn pp-btn--ghost', 'Consultar matrícula')}
+        {cta(c['slug'], c['short'], 'pp-btn pp-btn--ghost')}
       </div>
     </div>
     <div class="pp-vitrine__photo"><img src="/pos/img/{c['img']}" alt="{escape(c['img_alt'])}" width="417" height="684" fetchpriority="high"/></div>
@@ -519,12 +518,160 @@ def page_black():
     return html + foot()
 
 
+def all_courses():
+    out = [(c["slug"], c["name"], "Educação e aprendizagem") for c in EXPRESS]
+    out.append((MBA["slug"], MBA["name"], "MBA"))
+    names = {k: t for k, t, _ in AREAS}
+    out += [(slug, name, names[area]) for area, slug, name, _, _ in COURSES_12]
+    return out
+
+
+def page_matricula():
+    path = "/pos/matricula"
+    groups = {}
+    for slug, name, grp in all_courses():
+        groups.setdefault(grp, []).append((slug, name))
+    opts = "\n".join(
+        f'                <optgroup label="{escape(g)}">' + "".join(
+            f'<option value="{s}">{escape(n)}</option>' for s, n in items) + "</optgroup>"
+        for g, items in groups.items())
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "name": "Matrícula — Pós-graduação | Sampa Educacional"}
+    html = head("Matrícula — Pós-graduação Black November | Sampa Educacional",
+                "Formulário de matrícula nas pós-graduações da Faculdade Unypública comercializadas pela Sampa Educacional.",
+                path, "black.jpg", ld)
+    html = html.replace('<meta name="description"', '<meta name="robots" content="noindex"/>\n  <meta name="description"', 1)
+    html += top() + ribbon() + f"""<main id="conteudo">
+<section class="pp-section pp-section--soft pp-matricula" aria-labelledby="t">
+  <div class="pp-wrap pp-two">
+    <div class="pp-matricula__info">
+      <p class="pp-eyebrow" style="color:var(--blue)">Matrícula</p>
+      <h1 id="t" class="pp-rule">Garanta sua vaga na pós-graduação</h1>
+      <p class="pp-section__intro">Preencha seus dados. Em seguida você segue para o pagamento seguro do curso escolhido.</p>
+      <div class="pp-box pp-matricula__curso" aria-live="polite">
+        <p class="pp-course__meta">Curso escolhido</p>
+        <h2 id="curso-nome">Selecione o curso no formulário</h2>
+        <p class="js-promo" id="curso-preco"></p>
+        <p><a class="pp-link" id="curso-link" href="/pos/black-november">Ver detalhes do curso</a></p>
+      </div>
+      {IES_LINE}
+      <ol class="pp-steps pp-steps--compact">
+        <li><b>Dados</b><p>Você preenche este formulário.</p></li>
+        <li><b>Pagamento</b><p>Segue para o checkout seguro do Asaas.</p></li>
+        <li><b>Acesso</b><p>Liberado após a confirmação da matrícula no portal da Faculdade Unypública.</p></li>
+      </ol>
+    </div>
+
+    <div class="pp-formbox">
+      <form id="matricula-form" novalidate>
+        <div class="pp-fields">
+          <div class="pp-field pp-field--full">
+            <label for="fcurso">Curso</label>
+            <select id="fcurso" name="curso" required>
+              <option value="" disabled selected>Selecione o curso</option>
+{opts}
+            </select>
+          </div>
+          <div class="pp-field pp-field--full">
+            <label for="fname">Nome completo</label>
+            <input id="fname" name="name" autocomplete="name" placeholder="Seu nome completo" required/>
+          </div>
+          <div class="pp-field">
+            <label for="fdob">Data de nascimento</label>
+            <input id="fdob" type="date" name="dob"/>
+          </div>
+          <div class="pp-field">
+            <label for="fcpf">CPF</label>
+            <input id="fcpf" name="cpf" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14" required aria-describedby="fcpf-err"/>
+            <p class="pp-err" id="fcpf-err" hidden>Confira o CPF informado.</p>
+          </div>
+          <div class="pp-field pp-field--full">
+            <label for="femail">E-mail principal</label>
+            <input id="femail" type="email" name="email" autocomplete="email" placeholder="seu@email.com" required/>
+          </div>
+          <div class="pp-field">
+            <label for="fphone">Telefone</label>
+            <input id="fphone" type="tel" name="phone" autocomplete="tel" placeholder="(11) 99999-9999"/>
+          </div>
+          <div class="pp-field">
+            <label for="fwa">WhatsApp</label>
+            <input id="fwa" type="tel" name="whatsapp" placeholder="(11) 99999-9999" required/>
+          </div>
+          <div class="pp-field">
+            <label for="fcep">CEP</label>
+            <input id="fcep" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" required aria-describedby="fcep-err"/>
+            <p class="pp-err" id="fcep-err" hidden>Informe um CEP com 8 números.</p>
+          </div>
+          <div class="pp-field">
+            <label for="fformation">Formação atual</label>
+            <select id="fformation" name="formacao" required>
+              <option value="" disabled selected>Selecione</option>
+              <option>Ensino Médio</option>
+              <option>Graduação Incompleta</option>
+              <option>Graduação Completa</option>
+              <option>Pós-Graduação / Especialização</option>
+              <option>Mestrado ou Doutorado</option>
+            </select>
+          </div>
+          <div class="pp-field pp-field--full">
+            <span class="pp-label" id="mentoria-l">Gostaria de participar de uma Mentoria de Carreira personalizada?</span>
+            <div class="pp-radios" role="radiogroup" aria-labelledby="mentoria-l">
+              <label><input type="radio" name="mentoria" value="sim"/> Sim, tenho interesse</label>
+              <label><input type="radio" name="mentoria" value="nao"/> Não por enquanto</label>
+            </div>
+          </div>
+          <div class="pp-field pp-field--full">
+            <label for="fdream_p">Qual é o seu maior sonho pessoal? <span class="pp-opt">(opcional)</span></label>
+            <textarea id="fdream_p" name="sonho_pessoal" placeholder="Compartilhe algo sobre o que você almeja para a sua vida..."></textarea>
+          </div>
+          <div class="pp-field pp-field--full">
+            <label for="fdream_c">Qual é o seu maior sonho profissional? <span class="pp-opt">(opcional)</span></label>
+            <textarea id="fdream_c" name="sonho_profissional" placeholder="Onde você quer chegar na sua carreira?"></textarea>
+          </div>
+          <div class="pp-field pp-field--full">
+            <label for="fvip">Como podemos lhe auxiliar de forma ainda mais VIP? <span class="pp-opt">(opcional)</span></label>
+            <input id="fvip" name="vip_extra" placeholder="Descreva uma necessidade específica..."/>
+          </div>
+        </div>
+        <div class="pp-consent">
+          <input type="checkbox" id="fconsent" required aria-describedby="form-err"/>
+          <label for="fconsent">Concordo com a Política de Privacidade e autorizo o contato da equipe Sampa Educacional para concluir minha matrícula.</label>
+        </div>
+        <p class="pp-err" id="form-err" role="alert" aria-live="polite" hidden></p>
+        <button class="pp-btn pp-btn--yellow pp-btn--block" type="submit" id="fsubmit">Continuar para o pagamento</button>
+        <p class="pp-hint">Seus dados são usados apenas para a sua matrícula.</p>
+      </form>
+      <div class="pp-success" id="success" role="status" tabindex="-1" hidden>
+        <h2>Recebemos sua matrícula.</h2>
+        <p>Nossa equipe envia o link de pagamento do curso <strong id="success-curso"></strong> pelo WhatsApp ou e-mail informado em até 1 dia útil.</p>
+        <p><a class="pp-btn pp-btn--blue" id="success-wa" href="https://wa.me/{WA}" target="_blank" rel="noopener">Falar agora no WhatsApp</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+"""
+    courses = {}
+    for slug, name, grp in all_courses():
+        if slug == MBA["slug"] or any(c["slug"] == slug for c in EXPRESS):
+            page = f"/pos/{slug}"
+        else:
+            area = next(a for a, s2, *_ in COURSES_12 if s2 == slug)
+            page = f"/pos/black-november#{area}"
+        courses[slug] = {"name": name, "page": page, "price": slug != MBA["slug"] and SHOW_PRICE_360}
+    data = {"courses": courses, "wa": WA,
+            "price": {"de": BLACK["de"], "por": BLACK["por"], "parc": BLACK["parc"], "deadline": DEADLINE_TXT}}
+    extra = (f'<script>window.SAMPA_MATRICULA = {json.dumps(data, ensure_ascii=False)};</script>\n'
+             f'<script src="/pos/matricula.js?v={ASSET_V}" defer></script>\n</body>')
+    return html + foot().replace("</body>", extra, 1)
+
+
 def main():
     ROOT.mkdir(parents=True, exist_ok=True)
     for c in EXPRESS:
         (ROOT / f"{c['slug']}.html").write_text(page_express(c), encoding="utf-8")
     (ROOT / f"{MBA['slug']}.html").write_text(page_mba(), encoding="utf-8")
     (ROOT / "black-november.html").write_text(page_black(), encoding="utf-8")
+    (ROOT / "matricula.html").write_text(page_matricula(), encoding="utf-8")
     print("ok:", sorted(p.name for p in ROOT.glob("*.html")))
 
 
