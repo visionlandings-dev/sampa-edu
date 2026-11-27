@@ -14,9 +14,11 @@ ROOT = Path(__file__).resolve().parent.parent / "public" / "pos"
 SITE = "https://sampaedu.com"
 WA = "5511967992285"
 GRADE_URL = "https://sampagroup.pvunypublica.com.br/curso/{}"
-ASSET_V = "20261127g"
+ASSET_V = "20261127h"
 DEADLINE_ISO = "2026-11-30T23:59:59-03:00"
-DEADLINE_TXT = "30/11/2026"
+DEADLINE_TXT = "30/11/2026"   # 1ª fase; nome/prazo exibidos são trocados por /pos/pos.js (FASES)
+CAMPANHA = "Black November"
+FINAL_ISO = "2026-12-15T23:59:59-03:00"  # fim da última fase (Black December), mesmas condições
 
 # Condição Black November das especializações de 360h (dados da Sampa)
 BLACK = {"de": "R$ 1.770,00", "por": "R$ 1.327,50", "por_num": "1327.50",
@@ -260,7 +262,7 @@ def wa(course: str = "") -> str:
         msg = (f"Olá! Tenho interesse na pós-graduação em {course} (Black November). "
                "Pode me ajudar com a matrícula?")
     else:
-        msg = "Olá! Quero conhecer as pós-graduações da Black November da Sampa Educacional."
+        msg = "Olá! Quero conhecer as pós-graduações da Sampa Educacional."
     return f"https://wa.me/{WA}?text={quote(msg)}"
 
 
@@ -337,7 +339,7 @@ def ribbon(ch="site", off=True):
     oferta = f'{BLACK["off"]} até' if off else "condição especial até"
     return (f'<div class="pp-ribbon js-promo" role="note">Black November · {oferta} {DEADLINE_TXT} '
             f'· termina em <b data-countdown>3 dias</b></div>\n'
-            f'<div class="pp-ribbon js-ended" role="note">A condição Black November terminou em {DEADLINE_TXT}. {fim}</div>\n')
+            f'<div class="pp-ribbon js-ended" role="note">A condição promocional terminou. {fim}</div>\n')
 
 
 def price_block(show_from=True):
@@ -399,7 +401,7 @@ def course_ld(name, cid, path, hours, price=True):
                                "courseWorkload": f"PT{hours}H"}}
     if price and SHOW_PRICE_360:
         d["offers"] = {"@type": "Offer", "price": BLACK["por_num"], "priceCurrency": "BRL",
-                       "validThrough": DEADLINE_ISO, "category": "Black November",
+                       "validThrough": FINAL_ISO, "category": "Condição especial",
                        "seller": {"@type": "Organization", "name": "Sampa Educacional"}}
     return d
 
@@ -563,7 +565,7 @@ def page_mba(ch="site"):
         <h3>Condições Black November</h3>
         <p class="js-promo">Mesma condição das pós-graduações da campanha, válida até {DEADLINE_TXT}.</p>
         {price_block(show_from=False)}
-        <p class="js-ended">A condição Black November terminou. {ended_txt}</p>
+        <p class="js-ended">A condição promocional terminou. {ended_txt}</p>
         <div class="pp-actions">{cta(c['slug'], c['short'], 'pp-btn pp-btn--yellow pp-btn--block', ch=ch)}</div>
       </div>
       <h2 class="pp-rule" style="margin-top:2.5rem">O que está incluso</h2>
@@ -795,18 +797,35 @@ def page_matricula():
     return html + foot().replace("</body>", extra, 1)
 
 
+import re as _re
+
+
+def tag_campaign(html):
+    head_, sep, body = html.partition("<body")
+    for a, b in [(" · Black November", " · Condição especial"),
+                 (f"Condição Black November até {DEADLINE_TXT}.", "Condição especial por tempo limitado."),
+                 (f"à vista até {DEADLINE_TXT}.", "à vista por tempo limitado."),
+                 ("Pós-graduação Black November", "Pós-graduação")]:
+        head_ = head_.replace(a, b)
+    parts = _re.split(r"(<script\b.*?</script>)", body, flags=_re.S)
+    for i in range(0, len(parts), 2):
+        parts[i] = (parts[i].replace(CAMPANHA, f"<span data-campanha>{CAMPANHA}</span>")
+                            .replace(DEADLINE_TXT, f"<span data-prazo>{DEADLINE_TXT}</span>"))
+    return head_ + sep + "".join(parts)
+
+
 def main():
     ROOT.mkdir(parents=True, exist_ok=True)
     hot = ROOT.parent / "hotmart"
     hot.mkdir(parents=True, exist_ok=True)
     pages = EXPRESS + [course12(*c) for c in COURSES_12]
     for c in pages:
-        (ROOT / f"{c['slug']}.html").write_text(page_express(c), encoding="utf-8")
-        (hot / f"{c['slug']}.html").write_text(page_express(c, ch="hotmart"), encoding="utf-8")
-    (ROOT / f"{MBA['slug']}.html").write_text(page_mba(), encoding="utf-8")
-    (hot / f"{MBA['slug']}.html").write_text(page_mba(ch="hotmart"), encoding="utf-8")
-    (ROOT / "black-november.html").write_text(page_black(), encoding="utf-8")
-    (ROOT / "matricula.html").write_text(page_matricula(), encoding="utf-8")
+        (ROOT / f"{c['slug']}.html").write_text(tag_campaign(page_express(c)), encoding="utf-8")
+        (hot / f"{c['slug']}.html").write_text(tag_campaign(page_express(c, ch="hotmart")), encoding="utf-8")
+    (ROOT / f"{MBA['slug']}.html").write_text(tag_campaign(page_mba()), encoding="utf-8")
+    (hot / f"{MBA['slug']}.html").write_text(tag_campaign(page_mba(ch="hotmart")), encoding="utf-8")
+    (ROOT / "black-november.html").write_text(tag_campaign(page_black()), encoding="utf-8")
+    (ROOT / "matricula.html").write_text(tag_campaign(page_matricula()), encoding="utf-8")
     print("site:", len(list(ROOT.glob("*.html"))), "| hotmart:", len(list((ROOT.parent / "hotmart").glob("*.html"))))
 
 

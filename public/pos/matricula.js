@@ -55,8 +55,13 @@
     $('curso-nome').textContent = c ? c.name : 'Selecione o curso no formulário';
     $('curso-link').href = c ? c.page : '/pos/black-november';
     if (c && c.price && DATA.price.por) {
-      price.textContent = (c.from === false ? 'Condição Black November: ' : 'De ' + DATA.price.de + ' por ') +
-        DATA.price.por + ' à vista ou ' + DATA.price.parc + ', até ' + DATA.price.deadline + '.';
+      var sp = window.SampaPos, camp = sp ? sp.campanha() : '', ate = sp ? sp.prazo() : DATA.price.deadline;
+      if (sp && !sp.promoActive()) {
+        price.textContent = 'A condição promocional terminou. A equipe confirma os valores atuais após o envio.';
+      } else {
+        price.textContent = (c.from === false ? 'Condição ' + camp + ': ' : 'De ' + DATA.price.de + ' por ') +
+          DATA.price.por + ' à vista ou ' + DATA.price.parc + ', até ' + ate + '.';
+      }
     } else if (c) {
       price.textContent = 'A condição Black November deste curso é confirmada pela equipe após o envio.';
     } else {
@@ -143,7 +148,9 @@
     form.hidden = true;
     $('success-curso').textContent = c.name;
     $('success-wa').href = 'https://wa.me/' + DATA.wa + '?text=' + encodeURIComponent(
-      'Olá! Acabei de preencher a matrícula da pós-graduação em ' + c.name + ' (Black November). Pode me enviar o link de pagamento?');
+      'Olá! Acabei de preencher a matrícula da pós-graduação em ' + c.name +
+      (window.SampaPos && window.SampaPos.campanha() ? ' (' + window.SampaPos.campanha() + ')' : '') +
+      '. Pode me enviar o link de pagamento?');
     var ok = $('success');
     ok.hidden = false;
     requestAnimationFrame(function () { ok.focus(); });
